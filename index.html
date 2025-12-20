@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -8,17 +8,35 @@
 <body>
 
 <nav>
-  <a href="index.html">Accueil</a>
-  <a href="about.html">À propos</a>
-  <a href="projects.html">Projets</a>
-  <a href="certifications.html">Certifications</a>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="about.html" data-fr="À propos" data-en="About">À propos</a>
+  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+  <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
+  <button onclick="setLanguage('fr')">FR</button>
+  <button onclick="setLanguage('en')">EN</button>
 </nav>
 
 <div class="container">
-  <h1>Salah Abd</h1>
-  <p>Analyste de sécurité | Cybersecurity Analyst</p>
-  <p>Protection des systèmes, analyse des risques, sécurité réseau</p>
+  <h1 data-fr="Salah Abd" data-en="Salah Abd">Salah Abd</h1>
+  <p data-fr="Analyste de sécurité informatique"
+     data-en="Cybersecurity Analyst">
+     Analyste de sécurité informatique
+  </p>
+
+  <p data-fr="Protection des systèmes, analyse des risques et sécurité réseau"
+     data-en="System protection, risk analysis and network security">
+     Protection des systèmes, analyse des risques et sécurité réseau
+  </p>
 </div>
+
+<script>
+function setLanguage(lang) {
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+}
+</script>
 
 </body>
 </html>
+
