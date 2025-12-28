@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Analyse d’une attaque DoS – SYN Flood | Salah Abd</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Accueil</a>
+  <a href="projects.html">Projets</a>
+</nav>
+
+<div class="container">
+
+<h1>Analyse d’une attaque DoS (SYN Flood)</h1>
+
+<h2>Contexte</h2>
+<p>
+Dans ce scénario, je travaille en tant qu’analyste de sécurité pour une agence de voyage.
+Le site web de l’entreprise devient soudainement inaccessible et affiche une erreur de
+dépassement de délai de connexion.
+</p>
+
+<h2>Observation initiale</h2>
+<ul>
+  <li>Indisponibilité du site web</li>
+  <li>Erreur de timeout côté navigateur</li>
+  <li>Alertes générées par le système de surveillance</li>
+</ul>
+
+<h2>Analyse du trafic réseau</h2>
+<p>
+À l’aide d’un renifleur de paquets (Wireshark), une analyse du trafic réseau a révélé
+un volume anormalement élevé de paquets TCP SYN provenant d’une adresse IP inconnue.
+</p>
+
+<ul>
+  <li>Requêtes SYN répétées</li>
+  <li>Connexions TCP incomplètes</li>
+  <li>Saturation des ressources du serveur</li>
+</ul>
+
+<h2>Identification de l’attaque</h2>
+<p>
+L’attaque identifiée est un <strong>déni de service (DoS) de type SYN Flood</strong>.
+Cette attaque exploite le mécanisme de connexion TCP afin de submerger le serveur
+avec des connexions semi-ouvertes.
+</p>
+
+<h2>Impact sur l’organisation</h2>
+<ul>
+  <li>Indisponibilité du site web</li>
+  <li>Interruption des activités commerciales</li>
+  <li>Perte de productivité des employés</li>
+  <li>Risque financier et réputationnel</li>
+</ul>
+
+<h2>Réponse à l’incident</h2>
+<ul>
+  <li>Mise hors ligne temporaire du serveur</li>
+  <li>Blocage de l’adresse IP malveillante via le pare-feu</li>
+  <li>Surveillance renforcée du trafic réseau</li>
+</ul>
+
+<h2>Mesures de prévention</h2>
+<ul>
+  <li>Activation des SYN cookies</li>
+  <li>Limitation des connexions TCP simultanées</li>
+  <li>Déploiement d’un IDS/IPS</li>
+  <li>Utilisation d’un WAF</li>
+  <li>Protection anti-DDoS</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>
+Ce projet démontre l’importance de la surveillance réseau et de la compréhension des
+attaques DoS. Une réponse rapide et des mécanismes de protection adaptés sont essentiels
+pour assurer la disponibilité des services web.
+</p>
+
+</div>
+
+<footer>
+© 2025 Salah Abd — Cybersecurity Analyst
+</footer>
+
+</body>
+</html>
