@@ -6,7 +6,6 @@
   <meta name="keywords" content="cybersécurité, cybersecurity analyst, sécurité informatique, SOC, réseau, risk analysis">
   <meta name="author" content="Salahadine Abdassama Bayoka-Sato">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Salahadine Abdassama – Cybersecurity Analyst</title>
 
   <link rel="stylesheet" href="style.css">
@@ -24,57 +23,60 @@
   <button onclick="setLanguage('en')">EN</button>
 </nav>
 
-<!-- PROFIL -->
-<div class="profile">
-  <img src="profile.jpg" alt="Salahadine Abdassama">
-  <div class="profile-text">
-    <h1 data-fr="Salahadine Abdassama" data-en="Salahadine Abdassama">
-      Salahadine Abdassama
-    </h1>
+<div class="container">
 
-    <p data-fr="Analyste de sécurité informatique"
-       data-en="Cybersecurity Analyst">
-      Analyste de sécurité informatique
-    </p>
+  <!-- PROFIL -->
+  <div class="profile">
+    <img src="profile.jpg" alt="Salahadine Abdassama">
+    <div class="profile-text">
+      <h1 data-fr="Salahadine Abdassama" data-en="Salahadine Abdassama">
+        Salahadine Abdassama
+      </h1>
 
-    <p data-fr="Passionné par la protection des systèmes, l’analyse des risques et la sécurité réseau."
-       data-en="Passionate about system protection, risk analysis and network security.">
-      Passionné par la protection des systèmes, l’analyse des risques et la sécurité réseau.
-    </p>
+      <p data-fr="Analyste de sécurité informatique"
+         data-en="Cybersecurity Analyst">
+         Analyste de sécurité informatique
+      </p>
+
+      <p data-fr="Spécialisé en cybersécurité, analyse des risques, sécurité réseau et réponse à incident."
+         data-en="Specialized in cybersecurity, risk analysis, network security and incident response.">
+         Spécialisé en cybersécurité, analyse des risques, sécurité réseau et réponse à incident.
+      </p>
+    </div>
   </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <a href="https://github.com/salah-abd-security" target="_blank">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+
+    <a href="mailto:salahadinz@outlook.com">
+      <i class="fas fa-envelope"></i> Email
+    </a>
+
+    <a href="https://www.linkedin.com/in/salahadine-abdassama-02022b384/" target="_blank">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+  </div>
+
+  <!-- PROFIL PROFESSIONNEL (UNE SEULE FOIS) -->
+  <section class="summary">
+    <h2 data-fr="Profil professionnel" data-en="Professional Summary">
+      Profil professionnel
+    </h2>
+
+    <p data-fr="Analyste de sécurité informatique diplômé en informatique à l’Université de Kinshasa, certifié Google en cybersécurité et IT Support. Expérience en analyse des incidents, sécurité réseau, détection des menaces, analyse des logs et bonnes pratiques SOC."
+       data-en="Cybersecurity analyst with a computer science degree from the University of Kinshasa, Google-certified in cybersecurity and IT support. Experienced in incident analysis, network security, threat detection, log analysis and SOC best practices.">
+    </p>
+  </section>
+
 </div>
-
-<!-- CONTACT -->
-<div class="contact">
-  <a href="https://github.com/salah-abd-security" target="_blank">
-    <i class="fab fa-github"></i> GitHub
-  </a>
-
-  <a href="mailto:salahadinz@outlook.com">
-    <i class="fas fa-envelope"></i> Email
-  </a>
-
-  <a href="https://www.linkedin.com/in/salahadine-abdassama-02022b384/" target="_blank">
-    <i class="fab fa-linkedin"></i> LinkedIn
-  </a>
-</div>
-
-<!-- PROFIL PROFESSIONNEL (UNE SEULE FOIS) -->
-<section class="summary">
-  <h2 data-fr="Profil professionnel" data-en="Professional Summary">
-    Profil professionnel
-  </h2>
-
-  <p data-fr="Analyste de sécurité informatique diplômé en informatique à l’Université de Kinshasa, certifié Google en cybersécurité et support IT. Compétences en analyse des risques, sécurité réseau, détection des menaces et bonnes pratiques SOC. Motivé, rigoureux et orienté apprentissage continu."
-     data-en="Cybersecurity analyst with a degree in computer science from the University of Kinshasa, Google-certified in cybersecurity and IT support. Skilled in risk analysis, network security, threat detection and SOC best practices. Highly motivated and committed to continuous learning.">
-  </p>
-</section>
 
 <footer>
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
-<!-- SCRIPT LANGUE -->
 <script>
 function setLanguage(lang) {
   document.querySelectorAll('[data-fr]').forEach(el => {
@@ -82,7 +84,6 @@ function setLanguage(lang) {
   });
 }
 
-/* Langue par défaut */
 window.onload = function () {
   setLanguage('fr');
 };
@@ -90,19 +91,4 @@ window.onload = function () {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
