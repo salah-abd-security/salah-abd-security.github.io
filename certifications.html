@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Certifications – Salahadine Abdassama</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,43 +9,91 @@
 <body>
 
 <nav>
-  <a href="index.html">Accueil</a>
-  <a href="projects.html">Projets</a>
-  <a href="certifications.html">Certifications</a>
-  <a href="skills.html">Skills</a>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+  <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
+  <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+  <button onclick="setLanguage('fr')">FR</button>
+  <button onclick="setLanguage('en')">EN</button>
 </nav>
 
 <div class="container">
-  <h1>Certifications professionnelles</h1>
 
+  <h1 data-fr="Certifications professionnelles" data-en="Professional Certifications">
+    Certifications professionnelles
+  </h1>
+
+  <!-- CYBERSECURITY -->
   <div class="card">
-    <h3>Google Cybersecurity Professional Certificate</h3>
-    <p>Analyse des menaces, sécurité réseau, réponse à incident, SOC.</p>
+    <h3 data-fr="🛡 Cybersécurité" data-en="🛡 Cybersecurity">
+      🛡 Cybersécurité
+    </h3>
+
+    <ul>
+      <li>
+        <strong>Google Cybersecurity Professional Certificate</strong><br>
+        <span data-fr="Analyse des menaces, SOC, réponse à incident, sécurité réseau."
+              data-en="Threat analysis, SOC, incident response, network security.">
+        </span>
+      </li>
+
+      <li>
+        <strong>Cisco – Analyse de la sécurité de l’information</strong><br>
+        <span data-fr="Fondamentaux de la cybersécurité et gestion des risques."
+              data-en="Cybersecurity fundamentals and risk management.">
+        </span>
+      </li>
+
+      <li>
+        <strong>Certified Cybersecurity Educator Professional (CCEP)</strong><br>
+        <span data-fr="Formation et sensibilisation en cybersécurité."
+              data-en="Cybersecurity training and awareness.">
+        </span><br>
+        <a class="cert-link" target="_blank"
+           href="https://courses.redteamleaders.com/exam-completion/8a2e2b31fad4e827">
+          🔗 Vérifier le certificat
+        </a>
+      </li>
+    </ul>
   </div>
 
+  <!-- IT -->
   <div class="card">
-    <h3>Google IT Support Professional Certificate</h3>
-    <p>Systèmes, réseaux, dépannage, sécurité informatique.</p>
+    <h3 data-fr="🖥 IT & Réseaux" data-en="🖥 IT & Networking">
+      🖥 IT & Réseaux
+    </h3>
+
+    <ul>
+      <li>
+        <strong>Google IT Support Professional Certificate</strong><br>
+        <span data-fr="Systèmes, réseaux, dépannage et sécurité informatique."
+              data-en="Systems, networking, troubleshooting and IT security.">
+        </span>
+      </li>
+    </ul>
   </div>
 
+  <!-- DATA & MANAGEMENT -->
   <div class="card">
-    <h3>Cisco – Analyse de la sécurité de l’information</h3>
-    <p>Fondamentaux de la cybersécurité et analyse des risques.</p>
-  </div>
+    <h3 data-fr="📊 Data & Management" data-en="📊 Data & Management">
+      📊 Data & Management
+    </h3>
 
-  <div class="card">
-    <h3>Google Data Analytics Professional Certificate</h3>
-    <p>Analyse de données, SQL, visualisation, R, prise de décision.</p>
-  </div>
+    <ul>
+      <li>
+        <strong>Google Data Analytics Professional Certificate</strong><br>
+        <span data-fr="Analyse de données, SQL, visualisation et reporting."
+              data-en="Data analysis, SQL, visualization and reporting.">
+        </span>
+      </li>
 
-  <div class="card">
-    <h3>Google Project Management Professional Certificate</h3>
-    <p>Gestion de projets traditionnels et Agile.</p>
-  </div>
-
-  <div class="card">
-    <h3>Certified Cybersecurity Educator Professional (CCEP)</h3>
-    <p>Formation, sensibilisation et pédagogie en cybersécurité.</p>
+      <li>
+        <strong>Google Project Management Professional Certificate</strong><br>
+        <span data-fr="Gestion de projets, méthodes Agile et planification."
+              data-en="Project management, Agile methods and planning.">
+        </span>
+      </li>
+    </ul>
   </div>
 
 </div>
@@ -55,7 +102,18 @@
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
+<script>
+function setLanguage(lang) {
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+}
+
+window.onload = function () {
+  setLanguage('fr');
+};
+</script>
+
 </body>
 </html>
-
 
