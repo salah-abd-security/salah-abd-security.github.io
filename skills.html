@@ -1,45 +1,71 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Skills & Tools – Salahadine Abdassama</title>
+  <title>Compétences & Outils – Salahadine Abdassama</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <nav>
-  <a href="index.html">Accueil</a>
-  <a href="projects.html">Projets</a>
-  <a href="certifications.html">Certifications</a>
-  <a href="skills.html">Skills</a>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+  <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
+  <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+  <button onclick="setLanguage('fr')">FR</button>
+  <button onclick="setLanguage('en')">EN</button>
 </nav>
 
 <div class="container">
 
-  <h1>Skills & Tools</h1>
+  <h1 data-fr="Compétences & Outils" data-en="Skills & Tools">
+    Compétences & Outils
+  </h1>
 
+  <!-- SKILLS -->
   <div class="card">
-    <h3>🛡 Compétences en cybersécurité</h3>
+    <h3 data-fr="Compétences en cybersécurité" data-en="Cybersecurity Skills">
+      Compétences en cybersécurité
+    </h3>
+
     <ul>
-      <li>Analyse des incidents de sécurité</li>
-      <li>Détection d’attaques réseau (DoS, brute force)</li>
-      <li>Analyse de trafic réseau (TCP/IP)</li>
-      <li>Analyse de logs (approche SOC / SIEM)</li>
-      <li>Scan réseau et identification des vulnérabilités</li>
-      <li>Analyse des risques</li>
+      <li data-fr="Analyse des incidents de sécurité" data-en="Security incident analysis">
+        Analyse des incidents de sécurité
+      </li>
+      <li data-fr="Détection d’attaques réseau (DoS, brute force)" data-en="Network attack detection (DoS, brute force)">
+        Détection d’attaques réseau (DoS, brute force)
+      </li>
+      <li data-fr="Analyse de trafic réseau (TCP/IP)" data-en="Network traffic analysis (TCP/IP)">
+        Analyse de trafic réseau (TCP/IP)
+      </li>
+      <li data-fr="Analyse de logs (approche SOC / SIEM)" data-en="Log analysis (SOC / SIEM approach)">
+        Analyse de logs (approche SOC / SIEM)
+      </li>
+      <li data-fr="Scan réseau et identification des vulnérabilités" data-en="Network scanning and vulnerability identification">
+        Scan réseau et identification des vulnérabilités
+      </li>
+      <li data-fr="Analyse des risques" data-en="Risk analysis">
+        Analyse des risques
+      </li>
     </ul>
   </div>
 
+  <!-- TOOLS -->
   <div class="card">
-    <h3>🧰 Outils techniques</h3>
+    <h3 data-fr="Outils techniques" data-en="Technical Tools">
+      Outils techniques
+    </h3>
+
     <ul>
       <li>Wireshark</li>
       <li>Nmap</li>
       <li>Linux</li>
-      <li>Firewall (bases)</li>
+      <li data-fr="Pare-feu (bases)" data-en="Firewall (basics)">Pare-feu (bases)</li>
       <li>GitHub</li>
-      <li>Microsoft Excel (analyse sécurité)</li>
+      <li data-fr="Excel (analyse sécurité)" data-en="Excel (security analysis)">
+        Excel (analyse sécurité)
+      </li>
     </ul>
   </div>
 
@@ -49,5 +75,18 @@
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
+<script>
+function setLanguage(lang) {
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+}
+
+window.onload = function () {
+  setLanguage('fr');
+};
+</script>
+
 </body>
 </html>
+
