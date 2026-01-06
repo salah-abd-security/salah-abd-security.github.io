@@ -1,48 +1,58 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Portfolio de Salah Abd, analyste de sécurité informatique spécialisé en cybersécurité, analyse des risques et sécurité réseau.">
-<meta name="keywords" content="cybersécurité, cybersecurity analyst, sécurité informatique, SOC, réseau, risk analysis">
-<meta name="author" content="Salah Abd">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>À propos – Salah Abd</title>
+  <title>À propos – Salahadine Abdassama</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  <footer>
-  © 2025 Salah Abd — Cybersecurity Analyst  
-</footer>
+
 <body>
 
 <nav>
-  <a href="index.html">Accueil</a>
-  <a href="about.html">À propos</a>
-  <a href="projects.html">Projets</a>
-  <a href="certifications.html">Certifications</a>
-  <a href="skills.html">Skills</a>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="about.html" data-fr="À propos" data-en="About">À propos</a>
+  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+  <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
+  <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+  <button onclick="setLanguage('fr')">FR</button>
+  <button onclick="setLanguage('en')">EN</button>
 </nav>
 
 <div class="container">
-  <h1>À propos de moi</h1>
-  <p>
-    Analyste de sécurité spécialisé en analyse des risques,
-    protection des systèmes et sécurité réseau.
-  </p>
 
-  <h2>Compétences</h2>
-   <ul>
-  <li>Analyse des risques et vulnérabilités</li>
-  <li>Sécurité réseau & bonnes pratiques</li>
-  <li>Linux, SQL, Python (niveau junior)</li>
-  <li>SIEM & détection des incidents</li>
-  <li>Maintenance et sécurité des systèmes</li>
-  <li>Support IT & diagnostic</li>
-</ul>
+  <h1 data-fr="À propos de moi" data-en="About Me">
+    À propos de moi
+  </h1>
+
+  <div class="card">
+    <p data-fr="Je suis analyste de sécurité informatique diplômé en informatique à l’Université de Kinshasa, avec une spécialisation en cybersécurité. Mon intérêt principal porte sur l’analyse des incidents, la sécurité réseau et les opérations SOC."
+       data-en="I am a cybersecurity analyst with a computer science degree from the University of Kinshasa, specialized in cybersecurity. My main interests are incident analysis, network security, and SOC operations.">
+    </p>
+
+    <p data-fr="J’ai développé des compétences pratiques à travers des projets concrets impliquant l’analyse de trafic réseau, l’identification de vulnérabilités, l’analyse de logs et la réponse à incident."
+       data-en="I developed hands-on skills through practical projects involving network traffic analysis, vulnerability identification, log analysis, and incident response.">
+    </p>
+
+    <p data-fr="Certifié par Google, Cisco et Red Team Leaders, je cherche à évoluer dans un environnement SOC afin de renforcer mes compétences et contribuer à la sécurité des systèmes d’information."
+       data-en="Certified by Google, Cisco, and Red Team Leaders, I am seeking to grow in a SOC environment to strengthen my skills and contribute to information system security.">
+    </p>
+  </div>
+
 </div>
+
+<footer>
+  © 2025 Salahadine Abdassama — Cybersecurity Analyst
+</footer>
+
+<script>
+function setLanguage(lang) {
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+}
+window.onload = () => setLanguage('fr');
+</script>
 
 </body>
 </html>
-
-
-
 
