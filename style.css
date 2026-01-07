@@ -269,3 +269,30 @@ footer {
   color: #0d1117;
 }
 
+/* =========================
+   BADGES DYNAMIQUES
+========================= */
+.badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 50px;
+}
+
+.badge {
+  background: #161b22;
+  border: 1px solid #30363d;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  color: #c9d1d9;
+  transition: all 0.2s ease;
+}
+
+.badge:hover {
+  background: #58a6ff;
+  color: #0d1117;
+  transform: translateY(-2px);
+}
+
