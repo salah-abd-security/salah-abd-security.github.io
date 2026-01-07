@@ -350,4 +350,19 @@ footer {
   margin-right: 6px;
 }
 
+.cert-logos {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 50px;
+  opacity: 0.85;
+}
+
+.cert-logos img {
+  height: 45px;
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
 
