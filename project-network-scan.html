@@ -4,93 +4,124 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Projet – Scan réseau & identification des vulnérabilités</title>
-
-  <meta name="description" content="Projet cybersécurité : scan réseau, identification des services exposés et analyse des vulnérabilités.">
-  <meta name="author" content="Salahadine Abdassama">
+  <title data-fr="Réponse à incident – Analyse d’attaque"
+         data-en="Incident Response – Attack Analysis">
+    Réponse à incident – Analyse d’attaque
+  </title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
-  <a href="index.html">Accueil</a>
-  <a href="projects.html">Projets</a>
-  <a href="certifications.html">Certifications</a>
-  <a href="skills.html">Compétences</a>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+  <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+  <button onclick="setLanguage('fr')">FR</button>
+  <button onclick="setLanguage('en')">EN</button>
 </nav>
 
 <div class="container">
 
-  <!-- PROJET -->
+  <!-- TITRE -->
   <section class="card">
-    <h2>🔐 Scan réseau & identification des vulnérabilités</h2>
+    <h1 data-fr="🚨 Réponse à incident – Attaque réseau (SYN Flood)"
+        data-en="🚨 Incident Response – Network Attack (SYN Flood)">
+    </h1>
 
-    <p>
-      <strong>Contexte :</strong>
-      Une petite infrastructure réseau d’entreprise doit être analysée afin d’identifier les services exposés et les failles potentielles.
+    <p data-fr="Étude d’un incident de sécurité ayant provoqué l’indisponibilité d’un serveur web."
+       data-en="Analysis of a security incident that caused a web server outage.">
     </p>
+  </section>
 
-    <p>
-      <strong>Objectif :</strong>
-      Cartographier le réseau, détecter les hôtes actifs, identifier les ports ouverts et évaluer les risques de sécurité.
+  <!-- CONTEXTE -->
+  <section class="card">
+    <h3 data-fr="📌 Contexte" data-en="📌 Context"></h3>
+    <p data-fr="Un serveur web devient indisponible suite à un trafic réseau anormal."
+       data-en="A web server becomes unavailable following abnormal network traffic.">
     </p>
+  </section>
 
-    <p>
-      <strong>Analyse :</strong>
-      Un scan réseau a été réalisé pour identifier les adresses IP actives, les ports ouverts et les services en cours d’exécution.
-      Certains services non sécurisés ont été détectés, augmentant la surface d’attaque du réseau.
+  <!-- OBJECTIF -->
+  <section class="card">
+    <h3 data-fr="🎯 Objectif" data-en="🎯 Objective"></h3>
+    <p data-fr="Identifier la cause de l’interruption et classifier le type d’attaque."
+       data-en="Identify the cause of the outage and classify the type of attack.">
     </p>
+  </section>
 
-    <p>
-      <strong>Actions :</strong>
-      Analyse des résultats de scan, identification des services critiques, recommandations de sécurisation
-      (fermeture de ports inutiles, durcissement des services, segmentation réseau).
+  <!-- ANALYSE -->
+  <section class="card">
+    <h3 data-fr="🔍 Analyse technique" data-en="🔍 Technical Analysis"></h3>
+    <p data-fr="Analyse du trafic réseau montrant un volume élevé de requêtes TCP SYN provenant d’adresses IP suspectes."
+       data-en="Network traffic analysis revealing a high volume of TCP SYN requests from suspicious IP addresses.">
     </p>
+  </section>
 
-    <p>
-      <strong>Résultat :</strong>
-      Une vue claire de l’état de sécurité du réseau a été obtenue, avec une liste de vulnérabilités potentielles
-      et des recommandations d’amélioration.
-    </p>
+  <!-- ACTIONS -->
+  <section class="card">
+    <h3 data-fr="🛡️ Actions de réponse" data-en="🛡️ Response Actions"></h3>
+    <ul>
+      <li data-fr="Mise hors ligne temporaire du serveur"
+          data-en="Temporary server shutdown"></li>
+      <li data-fr="Blocage des adresses IP malveillantes via pare-feu"
+          data-en="Blocking malicious IPs via firewall"></li>
+      <li data-fr="Analyse post-incident"
+          data-en="Post-incident analysis"></li>
+    </ul>
+  </section>
 
-    <p>
-      <strong>Outils :</strong>
-      Nmap, TCP/IP, Analyse réseau.
+  <!-- RESULTAT -->
+  <section class="card">
+    <h3 data-fr="✅ Résultat" data-en="✅ Outcome"></h3>
+    <p data-fr="Service restauré avec succès et attaque identifiée comme un SYN Flood."
+       data-en="Service successfully restored and attack identified as a SYN Flood.">
     </p>
+  </section>
+
+  <!-- OUTILS -->
+  <section class="card">
+    <h3 data-fr="🧰 Outils utilisés" data-en="🧰 Tools Used"></h3>
+    <p>Wireshark · Pare-feu · Analyse TCP/IP</p>
   </section>
 
   <!-- LIVRABLES -->
   <section class="card">
-    <h3>📂 Livrables</h3>
+    <h3 data-fr="📂 Livrables" data-en="📂 Deliverables"></h3>
     <ul>
       <li>
-        <a href="assets/projects/project2/network-scan-report.docx" download>
-          📄 Rapport de scan réseau
+        <a href="assets/projects/project3/incident-report.docx.docx" download>
+          📄 Rapport d’incident
         </a>
       </li>
       <li>
-        <a href="assets/projects/project2/scan-results.xlsx" download>
-          📊 Résultats du scan
+        <a href="assets/projects/project3/logs-analysis.xlsx.xlsx" download>
+          📊 Analyse des logs
         </a>
       </li>
       <li>
-        <a href="assets/projects/project2/scenario.docx" download>
-          📝 Scénario du projet
+        <a href="assets/projects/project3/scenario.docx.docx" download>
+          📝 Scénario d’attaque
         </a>
       </li>
     </ul>
   </section>
-
-  <p><a href="projects.html">⬅ Retour aux projets</a></p>
 
 </div>
 
 <footer>
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
+
+<script>
+function setLanguage(lang) {
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+}
+window.onload = () => setLanguage('fr');
+</script>
 
 </body>
 </html>
