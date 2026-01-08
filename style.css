@@ -1,4 +1,4 @@
-/* =========================
+ /* =========================
    GLOBAL
 ========================= */
 * {
@@ -33,29 +33,31 @@ h2 {
 }
 
 /* =========================
-   NAVIGATION
+   NAVIGATION (FIXED)
 ========================= */
 nav {
   background: #161b22;
   padding: 15px 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-nav a {
+nav a,
+nav button {
   color: #58a6ff;
+  white-space: nowrap;
 }
 
 nav button {
   background: transparent;
   border: 1px solid #58a6ff;
-  color: #58a6ff;
-  padding: 5px 10px;
+  padding: 6px 12px;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -89,7 +91,7 @@ nav button:hover {
 }
 
 /* =========================
-   PROFIL
+   PROFILE
 ========================= */
 .profile {
   display: flex;
@@ -111,110 +113,7 @@ nav button:hover {
 }
 
 /* =========================
-   BADGES / CERTIFICATIONS
-========================= */
-.badges {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin: 15px 0;
-}
-
-.badges img {
-  height: 55px;
-  background: #ffffff;
-  padding: 6px;
-  border-radius: 6px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
-}
-
-/* =========================
-   CONTACT
-========================= */
-.contact {
-  margin-top: 40px;
-  display: flex;
-  gap: 25px;
-  font-size: 1.1rem;
-}
-
-.contact a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.contact i {
-  font-size: 1.4rem;
-}
-
-/* =========================
-   SUMMARY
-========================= */
-.summary {
-  margin-top: 60px;
-}
-
-.summary p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-/* =========================
-   CERTIFICATS
-========================= */
-.cert-link {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 12px;
-  border: 1px solid #58a6ff;
-  border-radius: 5px;
-  color: #58a6ff;
-  font-weight: 600;
-}
-
-.cert-link:hover {
-  background: #58a6ff;
-  color: #0d1117;
-}
-
-/* =========================
-   FOOTER
-========================= */
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 60px;
-  border-top: 1px solid #30363d;
-  color: #8b949e;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  .profile {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-
-  .contact {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  .container {
-    padding: 15px;
-  }
-}
-
- /* =========================
-   HERO SECTION
+   HERO
 ========================= */
 .hero {
   text-align: center;
@@ -241,12 +140,14 @@ footer {
   flex-wrap: wrap;
 }
 
+/* =========================
+   BUTTONS
+========================= */
 .btn-primary,
 .btn-secondary {
   padding: 10px 18px;
   border-radius: 6px;
   font-weight: 600;
-  text-decoration: none;
 }
 
 .btn-primary {
@@ -269,14 +170,14 @@ footer {
 }
 
 /* =========================
-   BADGES DYNAMIQUES
+   BADGES
 ========================= */
 .badges {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 50px;
+  margin: 25px 0 40px;
 }
 
 .badge {
@@ -284,15 +185,13 @@ footer {
   border: 1px solid #30363d;
   padding: 8px 14px;
   border-radius: 20px;
-  font-size: 0.95rem;
-  color: #c9d1d9;
-  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  transition: 0.2s;
 }
 
 .badge:hover {
   background: #58a6ff;
   color: #0d1117;
-  transform: translateY(-2px);
 }
 
 /* =========================
@@ -312,94 +211,62 @@ footer {
   padding: 8px;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease;
 }
 
-.cert-logos img:hover {
-  transform: scale(1.08);
-}
 /* =========================
-   HERO SKILLS BADGES
+   CONTACT
 ========================= */
-.skills-badges {
+.contact {
+  margin-top: 40px;
   display: flex;
+  gap: 25px;
+  font-size: 1.1rem;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin: 25px 0 40px;
 }
 
-.skills-badges span {
-  background: #161b22;
-  border: 1px solid #30363d;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  color: #c9d1d9;
+.contact a {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.skills-badges i {
-  color: #58a6ff;
-}
-
-.badge i {
-  margin-right: 6px;
-}
-
-.cert-logos {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-bottom: 50px;
-  opacity: 0.85;
-}
-
-.cert-logos img {
-  height: 45px;
-  background: #fff;
-  padding: 6px 10px;
-  border-radius: 6px;
+  gap: 8px;
 }
 
 /* =========================
-   CERTIFICATION LOGOS
+   FOOTER
 ========================= */
-.cert-logos {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  margin: 40px auto 20px;
-}
-
-.cert-logos img {
-  height: 55px;
-  background: #ffffff;
-  padding: 6px 10px;
-  border-radius: 6px;
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  border-top: 1px solid #30363d;
+  color: #8b949e;
 }
 
 /* =========================
-   SKILL BADGES
+   RESPONSIVE (MOBILE)
 ========================= */
-.badges {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 40px;
+@media (max-width: 768px) {
+
+  nav {
+    flex-direction: column;
+  }
+
+  nav a,
+  nav button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 15px;
+  }
 }
-
-.badge {
-  background: #161b22;
-  border: 1px solid #30363d;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-
-
