@@ -140,17 +140,28 @@
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
-<script>
+ <script>
+/* ===== MENU MOBILE ===== */
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+/* ===== LANGUE ===== */
 function setLanguage(lang) {
   document.querySelectorAll('[data-fr]').forEach(el => {
     el.textContent = el.getAttribute('data-' + lang);
   });
 }
-window.onload = () => setLanguage('fr');
+
+/* ===== INIT ===== */
+window.onload = () => {
+  setLanguage('fr');
+};
 </script>
 
 </body>
 </html>
+
 
 
 
