@@ -16,25 +16,24 @@
 <body>
 
 <!-- NAVIGATION -->
- <nav class="navbar">
-  <div class="nav-brand">
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  </div>
+ <header class="header">
+  <button class="menu-toggle" aria-label="Menu">
+    ☰
+  </button>
 
-  <div class="nav-links" id="navLinks">
-    <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-    <a href="about.html" data-fr="À propos" data-en="About">À propos</a>
-    <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
-    <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
-    <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+  <nav class="nav-menu">
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="projects.html">Projets</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="skills.html">Compétences</a>
 
-    <div class="lang-buttons">
+    <div class="lang-switch">
       <button onclick="setLanguage('fr')">FR</button>
       <button onclick="setLanguage('en')">EN</button>
     </div>
-  </div>
-</nav>
-
+  </nav>
+</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -158,8 +157,17 @@ window.onload = () => {
 };
 </script>
 
+ <script>
+document.querySelector('.menu-toggle')
+  .addEventListener('click', () => {
+    document.querySelector('.nav-menu')
+      .classList.toggle('active');
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
