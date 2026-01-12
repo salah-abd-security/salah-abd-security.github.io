@@ -41,6 +41,12 @@ h2, h3 {
   top: 0;
   z-index: 1000;
   background: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
   padding: 12px 16px;
   display: flex;
   align-items: center;
@@ -70,11 +76,11 @@ h2, h3 {
 
 .nav-menu a {
   padding: 12px 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #58a6ff;
 }
 
-/* Boutons langue */
+/* Lang switch */
 .lang-switch {
   margin-top: 15px;
   display: flex;
@@ -95,7 +101,6 @@ h2, h3 {
   color: #0d1117;
 }
 
-/* Menu ouvert */
 .nav-menu.active {
   display: flex;
 }
@@ -111,15 +116,14 @@ h2, h3 {
 
 .card {
   background: #161b22;
-  padding: 28px 26px;
+  padding: 26px;
   margin-bottom: 35px;
-  border-radius: 12px;
+  border-radius: 10px;
   border-left: 4px solid #58a6ff;
 }
 
 .card p,
 .card li {
-  text-align: left;
   line-height: 1.7;
   font-size: 1.05rem;
 }
@@ -133,7 +137,7 @@ h2, h3 {
 ========================= */
 .hero {
   text-align: center;
-  padding: 60px 20px 30px;
+  padding: 60px 20px 35px;
 }
 
 .hero p {
@@ -144,6 +148,64 @@ h2, h3 {
 }
 
 /* =========================
+   BUTTONS
+========================= */
+.hero-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #58a6ff;
+  color: #0d1117;
+}
+
+.btn-secondary {
+  border: 1px solid #58a6ff;
+  color: #58a6ff;
+}
+
+.btn-primary:hover {
+  background: #79c0ff;
+}
+
+.btn-secondary:hover {
+  background: #58a6ff;
+  color: #0d1117;
+}
+
+/* =========================
+   CERTIFICATION LOGOS
+========================= */
+.cert-logos {
+  max-width: 900px;
+  margin: 35px auto 45px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.cert-logos img {
+  height: 48px;
+  max-width: 120px;
+  background: #ffffff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+/* =========================
    BADGES
 ========================= */
 .badges {
@@ -151,7 +213,8 @@ h2, h3 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 25px 0 40px;
+  margin: 25px auto 40px;
+  max-width: 900px;
 }
 
 .badge {
@@ -168,14 +231,34 @@ h2, h3 {
 }
 
 /* =========================
+   PROFILE
+========================= */
+.profile {
+  max-width: 900px;
+  margin: 50px auto;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.profile img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #58a6ff;
+}
+
+/* =========================
    CONTACT
 ========================= */
 .contact {
-  margin-top: 40px;
+  margin: 40px auto;
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+  max-width: 900px;
 }
 
 .contact a {
@@ -196,7 +279,7 @@ footer {
 }
 
 /* =========================
-   PC VIEW
+   DESKTOP VIEW
 ========================= */
 @media (min-width: 769px) {
   .menu-toggle {
@@ -218,5 +301,15 @@ footer {
   .lang-switch {
     margin-left: auto;
     margin-top: 0;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+    text-align: center;
   }
 }
