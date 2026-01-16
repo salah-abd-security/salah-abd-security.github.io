@@ -2,58 +2,90 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Compétences & Outils – Salahadine Abdassama</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title data-fr="Compétences & Outils – Salahadine Abdassama"
+         data-en="Skills & Tools – Salahadine Abdassama">
+    Compétences & Outils – Salahadine Abdassama
+  </title>
+
+  <meta name="description"
+        content="Cybersecurity skills and tools: SOC, incident response, network security, SIEM, Wireshark, Nmap.">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
-  <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
-  <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
-  <button onclick="setLanguage('fr')">FR</button>
-  <button onclick="setLanguage('en')">EN</button>
-</nav>
+<!-- ===== HEADER & MENU (UNIFIÉ) ===== -->
+<header class="header">
+  <button class="menu-toggle" aria-label="Menu">☰</button>
 
-<div class="container">
+  <nav class="nav-menu">
+    <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+    <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+    <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
+    <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
 
-  <h1 data-fr="Compétences & Outils" data-en="Skills & Tools">
-    Compétences & Outils
+    <div class="lang-switch">
+      <button onclick="setLanguage('fr')">FR</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== CONTENU ===== -->
+<main class="container">
+
+  <h1 data-fr="🛠️ Compétences & Outils"
+      data-en="🛠️ Skills & Tools">
+    🛠️ Compétences & Outils
   </h1>
 
   <!-- SKILLS -->
-  <div class="card">
-    <h3 data-fr="Compétences en cybersécurité" data-en="Cybersecurity Skills">
+  <section class="card">
+    <h3 data-fr="Compétences en cybersécurité"
+        data-en="Cybersecurity Skills">
       Compétences en cybersécurité
     </h3>
 
     <ul>
-      <li data-fr="Analyse des incidents de sécurité" data-en="Security incident analysis">
+      <li data-fr="Analyse des incidents de sécurité"
+          data-en="Security incident analysis">
         Analyse des incidents de sécurité
       </li>
-      <li data-fr="Détection d’attaques réseau (DoS, brute force)" data-en="Network attack detection (DoS, brute force)">
+
+      <li data-fr="Détection d’attaques réseau (DoS, brute force)"
+          data-en="Network attack detection (DoS, brute force)">
         Détection d’attaques réseau (DoS, brute force)
       </li>
-      <li data-fr="Analyse de trafic réseau (TCP/IP)" data-en="Network traffic analysis (TCP/IP)">
+
+      <li data-fr="Analyse de trafic réseau (TCP/IP)"
+          data-en="Network traffic analysis (TCP/IP)">
         Analyse de trafic réseau (TCP/IP)
       </li>
-      <li data-fr="Analyse de logs (approche SOC / SIEM)" data-en="Log analysis (SOC / SIEM approach)">
+
+      <li data-fr="Analyse de logs (approche SOC / SIEM)"
+          data-en="Log analysis (SOC / SIEM approach)">
         Analyse de logs (approche SOC / SIEM)
       </li>
-      <li data-fr="Scan réseau et identification des vulnérabilités" data-en="Network scanning and vulnerability identification">
+
+      <li data-fr="Scan réseau et identification des vulnérabilités"
+          data-en="Network scanning and vulnerability identification">
         Scan réseau et identification des vulnérabilités
       </li>
-      <li data-fr="Analyse des risques" data-en="Risk analysis">
+
+      <li data-fr="Analyse des risques"
+          data-en="Risk analysis">
         Analyse des risques
       </li>
     </ul>
-  </div>
+  </section>
 
   <!-- TOOLS -->
-  <div class="card">
-    <h3 data-fr="Outils techniques" data-en="Technical Tools">
+  <section class="card">
+    <h3 data-fr="Outils techniques"
+        data-en="Technical Tools">
       Outils techniques
     </h3>
 
@@ -61,20 +93,26 @@
       <li>Wireshark</li>
       <li>Nmap</li>
       <li>Linux</li>
-      <li data-fr="Pare-feu (bases)" data-en="Firewall (basics)">Pare-feu (bases)</li>
+      <li data-fr="Pare-feu (bases)"
+          data-en="Firewall (basics)">
+        Pare-feu (bases)
+      </li>
       <li>GitHub</li>
-      <li data-fr="Excel (analyse sécurité)" data-en="Excel (security analysis)">
+      <li data-fr="Excel (analyse sécurité)"
+          data-en="Excel (security analysis)">
         Excel (analyse sécurité)
       </li>
     </ul>
-  </div>
+  </section>
 
-</div>
+</main>
 
+<!-- ===== FOOTER ===== -->
 <footer>
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
 function setLanguage(lang) {
   document.querySelectorAll('[data-fr]').forEach(el => {
@@ -82,11 +120,14 @@ function setLanguage(lang) {
   });
 }
 
-window.onload = function () {
-  setLanguage('fr');
-};
+window.onload = () => setLanguage('fr');
+
+document.querySelector('.menu-toggle')
+  .addEventListener('click', () => {
+    document.querySelector('.nav-menu')
+      .classList.toggle('active');
+  });
 </script>
 
 </body>
 </html>
-
