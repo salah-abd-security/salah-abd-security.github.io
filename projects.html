@@ -17,16 +17,25 @@
 
 <body>
 
-<nav>
-  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
-  <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
-  <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
-  <button onclick="setLanguage('fr')">FR</button>
-  <button onclick="setLanguage('en')">EN</button>
-</nav>
+<!-- ===== HEADER & MENU (IDENTIQUE À L’ACCUEIL) ===== -->
+<header class="header">
+  <button class="menu-toggle" aria-label="Menu">☰</button>
 
-<div class="container">
+  <nav class="nav-menu">
+    <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+    <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+    <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
+    <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+
+    <div class="lang-switch">
+      <button onclick="setLanguage('fr')">FR</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== CONTENU ===== -->
+<main class="container">
 
   <h1 data-fr="📂 Projets Cybersécurité"
       data-en="📂 Cybersecurity Projects">
@@ -37,7 +46,7 @@
      data-en="Practical case studies demonstrating my skills in incident analysis, network security and SOC practices.">
   </p>
 
-  <!-- PROJET 1 -->
+  <!-- ===== PROJET 1 ===== -->
   <section class="card">
     <h2 data-fr="🔐 Analyse d’une attaque DoS (SYN Flood)"
         data-en="🔐 DoS Attack Analysis (SYN Flood)">
@@ -49,18 +58,20 @@
     </p>
 
     <p>
-      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong>
+      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong><br>
       TCP/IP, SYN Flood, Incident Response, Network Analysis
     </p>
 
-    <a class="cert-link" href="project-dos-synflood.html"
-       data-fr="👉 Voir le projet"
-       data-en="👉 View project">
-      👉 Voir le projet
-    </a>
+    <p>
+      <a href="project-dos-synflood.html"
+         data-fr="👉 Voir le projet"
+         data-en="👉 View project">
+        👉 Voir le projet
+      </a>
+    </p>
   </section>
 
-  <!-- PROJET 2 -->
+  <!-- ===== PROJET 2 ===== -->
   <section class="card">
     <h2 data-fr="🌐 Scan réseau & identification des vulnérabilités"
         data-en="🌐 Network Scan & Vulnerability Identification">
@@ -72,18 +83,20 @@
     </p>
 
     <p>
-      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong>
+      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong><br>
       Nmap, Network Scanning, Vulnerability Assessment, Hardening
     </p>
 
-    <a class="cert-link" href="project-network-scan.html"
-       data-fr="👉 Voir le projet"
-       data-en="👉 View project">
-      👉 Voir le projet
-    </a>
+    <p>
+      <a href="project-network-scan.html"
+         data-fr="👉 Voir le projet"
+         data-en="👉 View project">
+        👉 Voir le projet
+      </a>
+    </p>
   </section>
 
-  <!-- PROJET 3 -->
+  <!-- ===== PROJET 3 ===== -->
   <section class="card">
     <h2 data-fr="📊 Analyse de logs & détection d’incident (SIEM)"
         data-en="📊 Log Analysis & Incident Detection (SIEM)">
@@ -95,23 +108,27 @@
     </p>
 
     <p>
-      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong>
+      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong><br>
       SIEM, Log Analysis, SOC Monitoring, Incident Detection
     </p>
 
-    <a class="cert-link" href="project-log-analysis.html"
-       data-fr="👉 Voir le projet"
-       data-en="👉 View project">
-      👉 Voir le projet
-    </a>
+    <p>
+      <a href="project-log-analysis.html"
+         data-fr="👉 Voir le projet"
+         data-en="👉 View project">
+        👉 Voir le projet
+      </a>
+    </p>
   </section>
 
-</div>
+</main>
 
+<!-- ===== FOOTER ===== -->
 <footer>
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
 function setLanguage(lang) {
   document.querySelectorAll('[data-fr]').forEach(el => {
@@ -119,9 +136,13 @@ function setLanguage(lang) {
   });
 }
 
-window.onload = function () {
-  setLanguage('fr');
-};
+window.onload = () => setLanguage('fr');
+
+document.querySelector('.menu-toggle')
+  .addEventListener('click', () => {
+    document.querySelector('.nav-menu')
+      .classList.toggle('active');
+  });
 </script>
 
 </body>
