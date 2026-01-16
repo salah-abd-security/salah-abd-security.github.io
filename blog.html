@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Actualités & Projets – Salahadine Abdassama</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <button class="menu-toggle">☰</button>
+
+  <nav class="nav-menu">
+    <a href="index.html">Accueil</a>
+    <a href="projects.html">Projets</a>
+    <a href="blog.html">Actualités</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="skills.html">Compétences</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <h1>📰 Actualités & Projets</h1>
+
+  <p>
+    Publications personnelles, avancées de projets,
+    vidéos et réflexions en cybersécurité.
+  </p>
+
+  <!-- NOTION EMBED -->
+  <div style="
+    margin-top: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+  ">
+    <iframe
+      src="COLLE_ICI_TON_LIEN_NOTION"
+      width="100%"
+      height="800"
+      style="border: none;">
+    </iframe>
+  </div>
+
+</main>
+
+<footer>
+  © 2025 Salahadine Abdassama — Cybersecurity Analyst
+</footer>
+
+<script>
+document.querySelector('.menu-toggle')
+  .addEventListener('click', () => {
+    document.querySelector('.nav-menu')
+      .classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>
