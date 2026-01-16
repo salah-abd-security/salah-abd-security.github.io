@@ -2,59 +2,87 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>À propos – Salahadine Abdassama</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title data-fr="À propos – Salahadine Abdassama"
+         data-en="About – Salahadine Abdassama">
+    À propos – Salahadine Abdassama
+  </title>
+
+  <meta name="description"
+        content="À propos de Salahadine Abdassama, analyste cybersécurité orienté SOC, sécurité réseau et réponse à incident.">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-  <a href="about.html" data-fr="À propos" data-en="About">À propos</a>
-  <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
-  <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
-  <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
-  <a href="blog.html">Actualités</a>
-  <button onclick="setLanguage('fr')">FR</button>
-  <button onclick="setLanguage('en')">EN</button>
-</nav>
+<!-- ===== HEADER & NAVIGATION ===== -->
+<header class="header">
+  <button class="menu-toggle" aria-label="Menu">☰</button>
 
-<div class="container">
+  <nav class="nav-menu">
+    <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+    <a href="about.html" data-fr="À propos" data-en="About">À propos</a>
+    <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
+    <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
+    <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+    <a href="blog.html" data-fr="Actualités" data-en="News">Actualités</a>
+
+    <div class="lang-switch">
+      <button onclick="setLanguage('fr')">FR</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== CONTENT ===== -->
+<main class="container">
 
   <h1 data-fr="À propos de moi" data-en="About Me">
     À propos de moi
   </h1>
 
-  <div class="card">
-    <p data-fr="Je suis analyste de sécurité informatique diplômé en informatique à l’Université de Kinshasa, avec une spécialisation en cybersécurité. Mon intérêt principal porte sur l’analyse des incidents, la sécurité réseau et les opérations SOC."
-       data-en="I am a cybersecurity analyst with a computer science degree from the University of Kinshasa, specialized in cybersecurity. My main interests are incident analysis, network security, and SOC operations.">
+  <section class="card">
+    <p data-fr="Je suis analyste de cybersécurité diplômé en informatique à l’Université de Kinshasa, avec une spécialisation orientée SOC et Blue Team. Mon intérêt principal porte sur l’analyse des incidents, la sécurité réseau et la surveillance des systèmes."
+       data-en="I am a cybersecurity analyst with a computer science degree from the University of Kinshasa, focused on SOC and Blue Team operations. My main interests include incident analysis, network security, and system monitoring.">
     </p>
 
     <p data-fr="J’ai développé des compétences pratiques à travers des projets concrets impliquant l’analyse de trafic réseau, l’identification de vulnérabilités, l’analyse de logs et la réponse à incident."
        data-en="I developed hands-on skills through practical projects involving network traffic analysis, vulnerability identification, log analysis, and incident response.">
     </p>
 
-    <p data-fr="Certifié par Google, Cisco et Red Team Leaders, je cherche à évoluer dans un environnement SOC afin de renforcer mes compétences et contribuer à la sécurité des systèmes d’information."
-       data-en="Certified by Google, Cisco, and Red Team Leaders, I am seeking to grow in a SOC environment to strengthen my skills and contribute to information system security.">
+    <p data-fr="Certifié par Google, Cisco et Red Team Leaders, je souhaite évoluer dans un environnement SOC afin de renforcer mes compétences et contribuer activement à la protection des systèmes d’information."
+       data-en="Certified by Google, Cisco, and Red Team Leaders, I aim to grow in a SOC environment to strengthen my skills and actively contribute to information system protection.">
     </p>
-  </div>
+  </section>
 
-</div>
+</main>
 
+<!-- ===== FOOTER ===== -->
 <footer>
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
+/* Menu mobile */
+document.querySelector('.menu-toggle')
+  .addEventListener('click', () => {
+    document.querySelector('.nav-menu')
+      .classList.toggle('active');
+  });
+
+/* Langue */
 function setLanguage(lang) {
   document.querySelectorAll('[data-fr]').forEach(el => {
     el.textContent = el.getAttribute('data-' + lang);
   });
 }
+
+/* Init */
 window.onload = () => setLanguage('fr');
 </script>
 
 </body>
 </html>
-
-
