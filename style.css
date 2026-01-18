@@ -313,3 +313,18 @@ footer {
     text-align: center;
   }
 }
+
+.notion-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 22px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.notion-btn:hover {
+  background: #1e40af;
+}
