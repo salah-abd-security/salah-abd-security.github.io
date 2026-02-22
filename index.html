@@ -35,7 +35,7 @@
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="hero">
+<section class="hero reveal">
   <h1 data-fr="Cybersecurity Analyst & SOC Enthusiast"
       data-en="Cybersecurity Analyst & SOC Enthusiast">
     Cybersecurity Analyst & SOC Enthusiast
@@ -66,15 +66,18 @@
 </section>
 
 <!-- ================= CERTIFICATIONS LOGOS ================= -->
-<section class="cert-logos">
+<section class="cert-logos reveal">
   <img src="assets/badges/google-cybersecurity.png" alt="Google Cybersecurity">
   <img src="assets/badges/google-it-support.png" alt="Google IT Support">
   <img src="assets/badges/cisco-security.png" alt="Cisco Security">
   <img src="assets/badges/ccep.png" alt="CCEP Red Team Leaders">
 </section>
+<section class="stats reveal">
+  <h2><span id="certCount">0</span> Certifications</h2>
+</section>
 
  <!-- ================= SKILLS BADGES ================= -->
-<section class="badges">
+<section class="badges reveal">
 
   <span class="badge">
     <i class="fas fa-shield-alt"></i> SOC
@@ -105,7 +108,7 @@
 <!-- ================= PROFILE ================= -->
 <div class="container">
 
-  <section class="card profile">
+  <section class="card profile reveal">
     <img src="profile.jpg" alt="Salahadine Abdassama">
 
     <div class="profile-text">
@@ -167,9 +170,26 @@ function setLanguage(lang) {
 }
 
 window.onload = () => setLanguage('fr');
+ // Animation au scroll
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal');
+
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 </script>
 
 </body>
 </html>
+
 
 
