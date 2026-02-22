@@ -427,3 +427,15 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+/* ===== STATS COUNTER ===== */
+
+.stats {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.stats h2 {
+  font-size: 28px;
+  color: #00c3ff;
+}
+
