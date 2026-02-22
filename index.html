@@ -186,10 +186,26 @@ function revealOnScroll() {
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+
+// Compteur dynamique
+function animateCounter(id, target) {
+  let count = 0;
+  const element = document.getElementById(id);
+  const interval = setInterval(() => {
+    count++;
+    element.textContent = count;
+    if (count >= target) clearInterval(interval);
+  }, 100);
+}
+
+window.addEventListener('load', () => {
+  animateCounter('certCount', 4); // tu as 4 certifications
+});
 </script>
 
 </body>
 </html>
+
 
 
 
