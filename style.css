@@ -34,7 +34,7 @@ h2, h3 {
 }
 
 /* =========================
-   HEADER & NAVIGATION
+   HEADER
 ========================= */
 .header {
   position: sticky;
@@ -42,17 +42,11 @@ h2, h3 {
   z-index: 1000;
   background: #161b22;
   border-bottom: 1px solid #30363d;
-}
-
-.header-inner {
-  max-width: 900px;
-  margin: 0 auto;
   padding: 12px 16px;
   display: flex;
   align-items: center;
 }
 
-/* Bouton ☰ */
 .menu-toggle {
   font-size: 26px;
   background: none;
@@ -61,13 +55,13 @@ h2, h3 {
   cursor: pointer;
 }
 
-/* Menu */
+/* NAV MENU */
 .nav-menu {
   display: none;
   flex-direction: column;
   background: #0d1117;
   position: absolute;
-  top: 56px;
+  top: 55px;
   left: 0;
   width: 100%;
   padding: 20px;
@@ -76,11 +70,13 @@ h2, h3 {
 
 .nav-menu a {
   padding: 12px 0;
-  font-size: 1.05rem;
-  color: #58a6ff;
 }
 
-/* Lang switch */
+.nav-menu.active {
+  display: flex;
+}
+
+/* LANG */
 .lang-switch {
   margin-top: 15px;
   display: flex;
@@ -96,28 +92,22 @@ h2, h3 {
   cursor: pointer;
 }
 
-.lang-switch button:hover {
-  background: #58a6ff;
-  color: #0d1117;
-}
-
-.nav-menu.active {
-  display: flex;
-}
-
 /* =========================
    LAYOUT
 ========================= */
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 60px auto;
   padding: 0 20px;
 }
 
+/* =========================
+   CARDS (NORMAL)
+========================= */
 .card {
   background: #161b22;
-  padding: 26px;
-  margin-bottom: 35px;
+  padding: 25px;
+  margin-bottom: 30px;
   border-radius: 10px;
   border-left: 4px solid #58a6ff;
 }
@@ -125,11 +115,6 @@ h2, h3 {
 .card p,
 .card li {
   line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-.card ul {
-  padding-left: 20px;
 }
 
 /* =========================
@@ -137,14 +122,13 @@ h2, h3 {
 ========================= */
 .hero {
   text-align: center;
-  padding: 60px 20px 35px;
+  padding: 60px 20px 30px;
 }
 
 .hero p {
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: auto;
   color: #8b949e;
-  font-size: 1.1rem;
 }
 
 /* =========================
@@ -152,17 +136,12 @@ h2, h3 {
 ========================= */
 .hero-actions {
   margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
 }
 
 .btn-primary,
 .btn-secondary {
   padding: 10px 18px;
   border-radius: 6px;
-  font-weight: 600;
 }
 
 .btn-primary {
@@ -172,37 +151,25 @@ h2, h3 {
 
 .btn-secondary {
   border: 1px solid #58a6ff;
-  color: #58a6ff;
-}
-
-.btn-primary:hover {
-  background: #79c0ff;
-}
-
-.btn-secondary:hover {
-  background: #58a6ff;
-  color: #0d1117;
 }
 
 /* =========================
-   CERTIFICATION LOGOS
+   CERTIFICATIONS LOGOS
 ========================= */
 .cert-logos {
-  max-width: 900px;
-  margin: 35px auto 45px;
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 20px;
   flex-wrap: wrap;
+  margin: 30px auto;
 }
 
 .cert-logos img {
-  height: 48px;
+  height: 45px;
   max-width: 120px;
-  background: #ffffff;
-  padding: 6px 8px;
+  background: #fff;
+  padding: 6px;
   border-radius: 6px;
-  object-fit: contain;
 }
 
 /* =========================
@@ -212,30 +179,21 @@ h2, h3 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin: 25px auto 40px;
-  max-width: 900px;
+  gap: 10px;
+  margin: 30px auto;
 }
 
 .badge {
   background: #161b22;
   border: 1px solid #30363d;
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-.badge:hover {
-  background: #58a6ff;
-  color: #0d1117;
 }
 
 /* =========================
    PROFILE
 ========================= */
 .profile {
-  max-width: 900px;
-  margin: 50px auto;
   display: flex;
   gap: 30px;
   align-items: center;
@@ -245,7 +203,6 @@ h2, h3 {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  object-fit: cover;
   border: 3px solid #58a6ff;
 }
 
@@ -253,18 +210,11 @@ h2, h3 {
    CONTACT
 ========================= */
 .contact {
-  margin: 40px auto;
+  margin: 40px 0;
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 900px;
-}
-
-.contact a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 /* =========================
@@ -275,13 +225,13 @@ footer {
   padding: 20px;
   margin-top: 60px;
   border-top: 1px solid #30363d;
-  color: #8b949e;
 }
 
 /* =========================
-   DESKTOP VIEW
+   DESKTOP FIX
 ========================= */
 @media (min-width: 769px) {
+
   .menu-toggle {
     display: none;
   }
@@ -290,12 +240,12 @@ footer {
     display: flex !important;
     position: static;
     flex-direction: row;
-    align-items: center;
     gap: 25px;
     background: none;
     padding: 0;
     border: none;
     margin-left: 20px;
+    align-items: center;
   }
 
   .lang-switch {
@@ -308,134 +258,9 @@ footer {
    MOBILE
 ========================= */
 @media (max-width: 768px) {
+
   .profile {
     flex-direction: column;
     text-align: center;
   }
 }
-
-.notion-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 22px;
-  background: #2563eb;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-.notion-btn:hover {
-  background: #1e40af;
-}
-
-/* ===== SKILLS GRID MODERNE ===== */
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
-
-.container section.card {
-  display: inline-block;
-  vertical-align: top;
-  width: 48%;
-  margin: 1%;
-}
-
-/* Responsive mobile */
-@media (max-width: 768px) {
-  .container section.card {
-    width: 100%;
-    margin: 10px 0;
-  }
-}
-
-/* Style des cartes */
-.card {
-  background: #111827;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h3 {
-  color: #00c3ff;
-  margin-bottom: 15px;
-}
-
-.card ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.card ul li {
-  background: rgba(255,255,255,0.05);
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-/* ===== BADGES PREMIUM ===== */
-
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin: 30px 0;
-}
-
-.badge {
-  background: linear-gradient(135deg, #00c3ff, #0066ff);
-  color: white;
-  padding: 8px 14px;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-}
-
-.badge i {
-  font-size: 14px;
-}
-
-.badge:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-}
-
-/* ===== ANIMATION SCROLL ===== */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* ===== STATS COUNTER ===== */
-
-.stats {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.stats h2 {
-  font-size: 28px;
-  color: #00c3ff;
-}
-
