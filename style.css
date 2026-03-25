@@ -21,6 +21,7 @@ h1 {
   font-size: 2.6rem;
   color: #f0f6fc;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 h2 {
@@ -138,7 +139,9 @@ a:hover {
   margin: auto;
 }
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 .hero-actions {
   margin-top: 25px;
   display: flex;
@@ -164,7 +167,7 @@ a:hover {
 }
 
 /* =========================
-   CARDS (PREMIUM)
+   CARDS PREMIUM
 ========================= */
 .card {
   background: rgba(22, 27, 34, 0.85);
@@ -179,6 +182,23 @@ a:hover {
 .card:hover {
   transform: translateY(-5px);
   border-color: #58a6ff;
+}
+
+/* =========================
+   GRID SYSTEM (FIX PRINCIPAL)
+========================= */
+
+/* ✅ grid activée seulement sur desktop */
+.grid-2 {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
 }
 
 /* =========================
@@ -326,13 +346,6 @@ footer {
     margin-left: auto;
     margin-top: 0;
   }
-
-  /* GRID CARDS */
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
 }
 
 /* =========================
@@ -353,5 +366,4 @@ footer {
     width: 110px;
     height: 110px;
   }
-
 }
