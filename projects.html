@@ -17,15 +17,15 @@
 
 <body>
 
-<!-- ===== HEADER & MENU (IDENTIQUE À L’ACCUEIL) ===== -->
+<!-- ===== HEADER ===== -->
 <header class="header">
-  <button class="menu-toggle" aria-label="Menu">☰</button>
+  <button class="menu-toggle">☰</button>
 
   <nav class="nav-menu">
-    <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-    <a href="projects.html" data-fr="Projets" data-en="Projects">Projets</a>
-    <a href="certifications.html" data-fr="Certifications" data-en="Certifications">Certifications</a>
-    <a href="skills.html" data-fr="Compétences" data-en="Skills">Compétences</a>
+    <a href="index.html">Accueil</a>
+    <a href="projects.html">Projets</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="skills.html">Compétences</a>
     <a href="blog.html">Actualités</a>
 
     <div class="lang-switch">
@@ -38,89 +38,83 @@
 <!-- ===== CONTENU ===== -->
 <main class="container">
 
-  <h1 data-fr="📂 Projets Cybersécurité"
-      data-en="📂 Cybersecurity Projects">
-    📂 Projets Cybersécurité
-  </h1>
+  <h1>📂 Projets Cybersécurité</h1>
 
-  <p data-fr="Études de cas pratiques démontrant mes compétences en analyse d’incidents, sécurité réseau et pratiques SOC."
-     data-en="Practical case studies demonstrating my skills in incident analysis, network security and SOC practices.">
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    Études de cas pratiques démontrant mes compétences en analyse d’incidents,
+    sécurité réseau et opérations SOC.
   </p>
 
-  <!-- ===== PROJET 1 ===== -->
-  <section class="card">
-    <h2 data-fr="🔐 Analyse d’une attaque DoS (SYN Flood)"
-        data-en="🔐 DoS Attack Analysis (SYN Flood)">
-      🔐 Analyse d’une attaque DoS (SYN Flood)
-    </h2>
+  <!-- ===== GRID ===== -->
+  <div class="grid-2">
 
-    <p data-fr="Analyse complète d’une attaque par déni de service ayant rendu un serveur web indisponible."
-       data-en="Full analysis of a denial-of-service attack that made a web server unavailable.">
-    </p>
+    <!-- PROJET 1 -->
+    <section class="card reveal">
+      <h2>🔐 DoS Attack – SYN Flood</h2>
 
-    <p>
-      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong><br>
-      TCP/IP, SYN Flood, Incident Response, Network Analysis
-    </p>
+      <p>
+        Analyse complète d’une attaque par déni de service ayant rendu un serveur indisponible.
+      </p>
 
-    <p>
-      <a href="project-dos-synflood.html"
-         data-fr="👉 Voir le projet"
-         data-en="👉 View project">
-        👉 Voir le projet
+      <p><strong>Skills :</strong></p>
+
+      <div class="badges">
+        <span class="badge">TCP/IP</span>
+        <span class="badge">SYN Flood</span>
+        <span class="badge">Incident Response</span>
+        <span class="badge">Network Analysis</span>
+      </div>
+
+      <a href="project-dos-synflood.html" class="btn-primary">
+        Voir le projet →
       </a>
-    </p>
-  </section>
+    </section>
 
-  <!-- ===== PROJET 2 ===== -->
-  <section class="card">
-    <h2 data-fr="🌐 Scan réseau & identification des vulnérabilités"
-        data-en="🌐 Network Scan & Vulnerability Identification">
-      🌐 Scan réseau & identification des vulnérabilités
-    </h2>
+    <!-- PROJET 2 -->
+    <section class="card reveal">
+      <h2>🌐 Network Scan & Vulnerabilities</h2>
 
-    <p data-fr="Cartographie d’un petit réseau et identification des services exposés et failles potentielles."
-       data-en="Mapping of a small network and identification of exposed services and potential vulnerabilities.">
-    </p>
+      <p>
+        Cartographie d’un réseau et identification des services exposés et vulnérabilités.
+      </p>
 
-    <p>
-      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong><br>
-      Nmap, Network Scanning, Vulnerability Assessment, Hardening
-    </p>
+      <p><strong>Skills :</strong></p>
 
-    <p>
-      <a href="project-network-scan.html"
-         data-fr="👉 Voir le projet"
-         data-en="👉 View project">
-        👉 Voir le projet
+      <div class="badges">
+        <span class="badge">Nmap</span>
+        <span class="badge">Scanning</span>
+        <span class="badge">Vulnerability</span>
+        <span class="badge">Hardening</span>
+      </div>
+
+      <a href="project-network-scan.html" class="btn-primary">
+        Voir le projet →
       </a>
-    </p>
-  </section>
+    </section>
 
-  <!-- ===== PROJET 3 ===== -->
-  <section class="card">
-    <h2 data-fr="📊 Analyse de logs & détection d’incident (SIEM)"
-        data-en="📊 Log Analysis & Incident Detection (SIEM)">
-      📊 Analyse de logs & détection d’incident (SIEM)
-    </h2>
+    <!-- PROJET 3 -->
+    <section class="card reveal">
+      <h2>📊 SIEM Log Analysis</h2>
 
-    <p data-fr="Analyse des journaux système et réseau pour détecter des comportements suspects."
-       data-en="Analysis of system and network logs to detect suspicious behaviors.">
-    </p>
+      <p>
+        Analyse de logs système et réseau pour détecter des comportements suspects.
+      </p>
 
-    <p>
-      <strong data-fr="Compétences :" data-en="Skills :">Compétences :</strong><br>
-      SIEM, Log Analysis, SOC Monitoring, Incident Detection
-    </p>
+      <p><strong>Skills :</strong></p>
 
-    <p>
-      <a href="project-log-analysis.html"
-         data-fr="👉 Voir le projet"
-         data-en="👉 View project">
-        👉 Voir le projet
+      <div class="badges">
+        <span class="badge">SIEM</span>
+        <span class="badge">Log Analysis</span>
+        <span class="badge">SOC</span>
+        <span class="badge">Detection</span>
+      </div>
+
+      <a href="project-log-analysis.html" class="btn-primary">
+        Voir le projet →
       </a>
-    </p>
-  </section>
+    </section>
+
+  </div>
 
 </main>
 
@@ -129,7 +123,7 @@
   © 2025 Salahadine Abdassama — Cybersecurity Analyst
 </footer>
 
-<!-- ===== SCRIPTS ===== -->
+<!-- ===== SCRIPT ===== -->
 <script>
 function setLanguage(lang) {
   document.querySelectorAll('[data-fr]').forEach(el => {
@@ -144,8 +138,24 @@ document.querySelector('.menu-toggle')
     document.querySelector('.nav-menu')
       .classList.toggle('active');
   });
+
+// Animation scroll
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal');
+
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 </script>
 
 </body>
 </html>
-
