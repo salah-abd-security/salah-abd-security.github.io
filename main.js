@@ -72,8 +72,7 @@ function buildFooter(lang) {
   const footer = el("footer");
   footer.append(el("div", { class: "wrap" }, [
     el("span", {}, `© 2026 Salahadine Abdassama`),
-    el("span", {}, lang === "fr" ? "Analyste cybersécurité, SOC et Blue Team" : "Cybersecurity Analyst, SOC & Blue Team"),
-    el("a", { href: "admin.html" }, lang === "fr" ? "Admin" : "Admin")
+    el("span", {}, lang === "fr" ? "Analyste cybersécurité, SOC et Blue Team" : "Cybersecurity Analyst, SOC & Blue Team")
   ]));
   return footer;
 }
@@ -237,6 +236,29 @@ function renderProjects(data, lang, isPreview) {
       el("div", { class: "projects-layout" }, [featureCard, list])
     ])
   ]));
+
+  if (data.realisations && data.realisations.length) {
+    slot.append(el("section", {}, [
+      el("div", { class: "wrap" }, [
+        el("div", { class: "section-head" }, [
+          el("h2", { text: lang === "fr" ? "Réalisations web" : "Web projects" })
+        ]),
+        el("div", { class: "project-list" }, data.realisations.map(r =>
+          el("article", { class: "project-card" }, [
+            el("div", {}, [
+              el("h3", { text: t(r.title, lang) }),
+              el("p", { text: t(r.summary, lang) }),
+              el("div", { class: "tag-row" }, r.tags.map(tag => el("span", { class: "tag-light" }, tag)))
+            ]),
+            el("div", { class: "card-meta" }, [
+              el("span", {}, r.tools),
+              el("a", { href: r.url, target: "_blank", rel: "noopener" }, lang === "fr" ? "Visiter le site" : "Visit the site")
+            ])
+          ])
+        ))
+      ])
+    ]));
+  }
 }
 
 function renderProjectDetail(data, lang) {
@@ -342,6 +364,23 @@ function renderAbout(data, lang) {
       ])
     ])
   ]));
+
+  if (data.experience && data.experience.length) {
+    slot.append(el("section", { class: "section-alt" }, [
+      el("div", { class: "wrap" }, [
+        el("div", { class: "section-head" }, [
+          el("h2", { text: lang === "fr" ? "Parcours" : "Experience" })
+        ]),
+        el("div", { style: "display:flex;flex-direction:column;gap:20px" }, data.experience.map(x =>
+          el("article", { class: "blog-card" }, [
+            el("h3", { text: t(x.role, lang) }),
+            el("p", { text: `${x.org} · ${t(x.period, lang)}` }),
+            ...x.points.map(pt => el("p", { text: "▸ " + t(pt, lang) }))
+          ])
+        ))
+      ])
+    ]));
+  }
 }
 
 function renderBlog(data, lang) {
