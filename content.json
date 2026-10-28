@@ -1,25 +1,35 @@
 {
   "profile": {
     "name": "Salahadine Abdassama",
-    "role": { "fr": "Analyste cybersécurité – SOC / Blue Team", "en": "Cybersecurity Analyst – SOC / Blue Team" },
-    "headline": { "fr": "Analyste cybersécurité orienté SOC", "en": "SOC-focused Cybersecurity Analyst" },
+    "role": {
+      "fr": "Analyste cybersécurité – SOC / Blue Team",
+      "en": "Cybersecurity Analyst – SOC / Blue Team"
+    },
+    "headline": {
+      "fr": "Analyste cybersécurité orienté SOC",
+      "en": "SOC-focused Cybersecurity Analyst"
+    },
     "lead": {
       "fr": "Analyse d'incidents, sécurité réseau, détection des menaces et analyse de logs SIEM. Chaque étude de cas est livrée avec son rapport d'incident, son analyse et son scénario.",
       "en": "Incident analysis, network security, threat detection and SIEM log analysis. Every case study ships with its incident report, its analysis, and its scenario."
     },
     "email": "salahadinz@outlook.com",
     "github": "https://github.com/salah-abd-security",
-    "linkedin": "https://www.linkedin.com/in/salahadine-abdassama-02022b384/",
+    "linkedin": "https://www.linkedin.com/in/salahadineabdassama-02022b384",
     "cv": "assets/cv/CV-Salahadine-Abdassama.pdf",
     "photo": "profile.jpg",
     "about": [
       {
-        "fr": "Diplômé en informatique de l'Université de Kinshasa, je m'oriente vers le SOC et la Blue Team. Mon intérêt principal : l'analyse des incidents, la sécurité réseau et la surveillance des systèmes.",
-        "en": "A computer science graduate from the University of Kinshasa, I'm focused on SOC and Blue Team work. My main interests are incident analysis, network security and system monitoring."
+        "fr": "Titulaire d'une licence en informatique de l'Université de Kinshasa, je termine un Master 2 en Réseaux et Sécurité Informatique (diplôme attendu en novembre 2026). Je m'oriente vers le SOC et la Blue Team, avec un intérêt particulier pour l'analyse des incidents, la sécurité réseau et la surveillance des systèmes.",
+        "en": "I hold a bachelor's degree in computer science from the University of Kinshasa and I am completing a Master's 2 in Networks and Information Security (degree expected in November 2026). I'm focused on SOC and Blue Team work, with a particular interest in incident analysis, network security and system monitoring."
       },
       {
-        "fr": "J'ai développé des compétences pratiques à travers des projets concrets impliquant l'analyse de trafic réseau, l'identification de vulnérabilités, l'analyse de logs et la réponse à incident.",
-        "en": "I've built hands-on skills through concrete projects involving network traffic analysis, vulnerability identification, log analysis and incident response."
+        "fr": "J'ai développé des compétences pratiques à travers des études de cas simulées : analyse de trafic réseau, identification de vulnérabilités, analyse de logs et réponse à incident.",
+        "en": "I've built hands-on skills through simulated case studies: network traffic analysis, vulnerability identification, log analysis and incident response."
+      },
+      {
+        "fr": "J'ai effectué deux stages en environnement réseau : à la Régie des Voies Aériennes (RVA) en 2023, puis à la Banque Centrale du Congo (BCC) en 2026, où j'ai aussi préparé mon mémoire sur la maturité en cybersécurité des institutions financières.",
+        "en": "I completed two internships in network environments: at the Régie des Voies Aériennes (RVA) in 2023, then at the Central Bank of Congo (BCC) in 2026, where I also prepared my thesis on the cybersecurity maturity of financial institutions."
       },
       {
         "fr": "Certifié par Google, Cisco et Red Team Leaders, je cherche un environnement SOC pour renforcer mes compétences et contribuer activement à la protection des systèmes d'information.",
@@ -32,126 +42,591 @@
       "id": "dos-synflood",
       "page": "project-dos-synflood.html",
       "featured": true,
-      "title": { "fr": "Attaque DoS : analyse d'un SYN Flood", "en": "DoS Attack: SYN Flood Analysis" },
-      "summary": {
-        "fr": "Un serveur web devient indisponible. La capture réseau révèle un volume anormal de requêtes TCP SYN : identification de l'attaque, blocage des IP malveillantes, restauration du service.",
-        "en": "A web server goes down. The traffic capture reveals an abnormal volume of TCP SYN requests: identifying the attack, blocking malicious IPs, restoring the service."
+      "title": {
+        "fr": "Attaque DoS : analyse d'un SYN Flood",
+        "en": "DoS Attack: SYN Flood Analysis"
       },
-      "level": { "fr": "Intermédiaire", "en": "Intermediate" },
+      "summary": {
+        "fr": "Étude de cas simulée. Un serveur web devient indisponible. La capture réseau révèle un volume anormal de requêtes TCP SYN : identification de l'attaque, blocage des IP malveillantes, restauration du service.",
+        "en": "Simulated case study. A web server goes down. The traffic capture reveals an abnormal volume of TCP SYN requests: identifying the attack, blocking malicious IPs, restoring the service."
+      },
+      "level": {
+        "fr": "Intermédiaire",
+        "en": "Intermediate"
+      },
       "tools": "Wireshark · Pare-feu · TCP/IP",
-      "tags": ["TCP/IP", "SYN Flood", "Incident Response", "Network Analysis"],
+      "tags": [
+        "TCP/IP",
+        "SYN Flood",
+        "Incident Response",
+        "Network Analysis"
+      ],
       "sections": [
-        { "icon": "📌", "title": { "fr": "Contexte", "en": "Context" }, "text": { "fr": "Un serveur web devient indisponible suite à un trafic réseau anormal.", "en": "A web server becomes unavailable following abnormal network traffic." } },
-        { "icon": "🎯", "title": { "fr": "Objectif", "en": "Objective" }, "text": { "fr": "Identifier la cause de l'interruption et qualifier le type d'attaque.", "en": "Identify the cause of the outage and determine the type of attack." } },
-        { "icon": "🔍", "title": { "fr": "Analyse", "en": "Analysis" }, "text": { "fr": "Capture du trafic réseau montrant un volume élevé de requêtes TCP SYN provenant d'adresses IP suspectes.", "en": "Network traffic capture showing a high volume of TCP SYN requests from suspicious IP addresses." } },
-        { "icon": "🛡️", "title": { "fr": "Actions", "en": "Actions" }, "text": { "fr": "Mise hors ligne temporaire du serveur, blocage des adresses IP malveillantes via pare-feu, puis analyse post-incident et durcissement.", "en": "Temporary server shutdown, blocking malicious IP addresses via firewall, then post-incident analysis and hardening." } },
-        { "icon": "✅", "title": { "fr": "Résultat", "en": "Outcome" }, "text": { "fr": "Service restauré avec succès, attaque identifiée comme un SYN Flood.", "en": "Service successfully restored, attack identified as a SYN Flood." } }
+        {
+          "icon": "📌",
+          "title": {
+            "fr": "Contexte",
+            "en": "Context"
+          },
+          "text": {
+            "fr": "Scénario simulé : un serveur web devient indisponible suite à un trafic réseau anormal.",
+            "en": "Simulated scenario: a web server becomes unavailable following abnormal network traffic."
+          }
+        },
+        {
+          "icon": "🎯",
+          "title": {
+            "fr": "Objectif",
+            "en": "Objective"
+          },
+          "text": {
+            "fr": "Identifier la cause de l'interruption et qualifier le type d'attaque.",
+            "en": "Identify the cause of the outage and determine the type of attack."
+          }
+        },
+        {
+          "icon": "🔍",
+          "title": {
+            "fr": "Analyse",
+            "en": "Analysis"
+          },
+          "text": {
+            "fr": "Capture du trafic réseau montrant un volume élevé de requêtes TCP SYN provenant d'adresses IP suspectes.",
+            "en": "Network traffic capture showing a high volume of TCP SYN requests from suspicious IP addresses."
+          }
+        },
+        {
+          "icon": "🛡️",
+          "title": {
+            "fr": "Actions",
+            "en": "Actions"
+          },
+          "text": {
+            "fr": "Mise hors ligne temporaire du serveur, blocage des adresses IP malveillantes via pare-feu, puis analyse post-incident et durcissement.",
+            "en": "Temporary server shutdown, blocking malicious IP addresses via firewall, then post-incident analysis and hardening."
+          }
+        },
+        {
+          "icon": "✅",
+          "title": {
+            "fr": "Résultat",
+            "en": "Outcome"
+          },
+          "text": {
+            "fr": "Dans le scénario : service restauré avec succès, attaque identifiée comme un SYN Flood.",
+            "en": "In the scenario: service successfully restored, attack identified as a SYN Flood."
+          }
+        }
       ],
       "deliverables": [
-        { "label": { "fr": "Rapport d'incident", "en": "Incident report" }, "file": "projects/dos-synflood/incident-report.docx" },
-        { "label": { "fr": "Analyse du trafic", "en": "Traffic analysis" }, "file": "projects/dos-synflood/traffic-analysis.xlsx" },
-        { "label": { "fr": "Scénario d'attaque", "en": "Attack scenario" }, "file": "projects/dos-synflood/scenario.docx" }
+        {
+          "label": {
+            "fr": "Rapport d'incident",
+            "en": "Incident report"
+          },
+          "file": "projects/dos-synflood/incident-report.docx"
+        },
+        {
+          "label": {
+            "fr": "Analyse du trafic",
+            "en": "Traffic analysis"
+          },
+          "file": "projects/dos-synflood/traffic-analysis.xlsx"
+        },
+        {
+          "label": {
+            "fr": "Scénario d'attaque",
+            "en": "Attack scenario"
+          },
+          "file": "projects/dos-synflood/scenario.docx"
+        }
       ]
     },
     {
       "id": "network-scan",
       "page": "project-network-scan.html",
       "featured": false,
-      "title": { "fr": "Scan réseau et vulnérabilités", "en": "Network Scan & Vulnerabilities" },
-      "summary": {
-        "fr": "Cartographie d'un réseau de test avec Nmap : identification des services exposés, des ports ouverts et des vulnérabilités, puis recommandations de durcissement.",
-        "en": "Mapping a test network with Nmap: identifying exposed services, open ports and vulnerabilities, then hardening recommendations."
+      "title": {
+        "fr": "Scan réseau et vulnérabilités",
+        "en": "Network Scan & Vulnerabilities"
       },
-      "level": { "fr": "Intermédiaire", "en": "Intermediate" },
+      "summary": {
+        "fr": "Étude de cas simulée. Cartographie d'un réseau de test avec Nmap : identification des services exposés, des ports ouverts et des vulnérabilités, puis recommandations de durcissement.",
+        "en": "Simulated case study. Mapping a test network with Nmap: identifying exposed services, open ports and vulnerabilities, then hardening recommendations."
+      },
+      "level": {
+        "fr": "Intermédiaire",
+        "en": "Intermediate"
+      },
       "tools": "Nmap · Hardening",
-      "tags": ["Nmap", "Scanning", "Vulnerability", "Hardening"],
+      "tags": [
+        "Nmap",
+        "Scanning",
+        "Vulnerability",
+        "Hardening"
+      ],
       "sections": [
-        { "icon": "📌", "title": { "fr": "Contexte", "en": "Context" }, "text": { "fr": "Un réseau de test doit être audité avant sa mise en production.", "en": "A test network needs auditing before going into production." } },
-        { "icon": "🎯", "title": { "fr": "Objectif", "en": "Objective" }, "text": { "fr": "Cartographier les hôtes actifs, les ports ouverts et les services exposés.", "en": "Map active hosts, open ports and exposed services." } },
-        { "icon": "🔍", "title": { "fr": "Analyse", "en": "Analysis" }, "text": { "fr": "Scan Nmap du réseau, identification des versions de services et des vulnérabilités connues associées.", "en": "Nmap scan of the network, identifying service versions and their known vulnerabilities." } },
-        { "icon": "🛡️", "title": { "fr": "Actions", "en": "Actions" }, "text": { "fr": "Classement des vulnérabilités par criticité et rédaction de recommandations de durcissement pour chaque service exposé.", "en": "Ranking vulnerabilities by severity and writing hardening recommendations for each exposed service." } },
-        { "icon": "✅", "title": { "fr": "Résultat", "en": "Outcome" }, "text": { "fr": "Cartographie complète livrée avec un plan de durcissement priorisé.", "en": "A complete map delivered with a prioritized hardening plan." } }
+        {
+          "icon": "📌",
+          "title": {
+            "fr": "Contexte",
+            "en": "Context"
+          },
+          "text": {
+            "fr": "Scénario simulé : un réseau de test doit être audité avant sa mise en production.",
+            "en": "Simulated scenario: a test network needs auditing before going into production."
+          }
+        },
+        {
+          "icon": "🎯",
+          "title": {
+            "fr": "Objectif",
+            "en": "Objective"
+          },
+          "text": {
+            "fr": "Cartographier les hôtes actifs, les ports ouverts et les services exposés.",
+            "en": "Map active hosts, open ports and exposed services."
+          }
+        },
+        {
+          "icon": "🔍",
+          "title": {
+            "fr": "Analyse",
+            "en": "Analysis"
+          },
+          "text": {
+            "fr": "Scan Nmap du réseau, identification des versions de services et des vulnérabilités connues associées.",
+            "en": "Nmap scan of the network, identifying service versions and their known vulnerabilities."
+          }
+        },
+        {
+          "icon": "🛡️",
+          "title": {
+            "fr": "Actions",
+            "en": "Actions"
+          },
+          "text": {
+            "fr": "Classement des vulnérabilités par criticité et rédaction de recommandations de durcissement pour chaque service exposé.",
+            "en": "Ranking vulnerabilities by severity and writing hardening recommendations for each exposed service."
+          }
+        },
+        {
+          "icon": "✅",
+          "title": {
+            "fr": "Résultat",
+            "en": "Outcome"
+          },
+          "text": {
+            "fr": "Dans le scénario : cartographie complète livrée avec un plan de durcissement priorisé.",
+            "en": "In the scenario: a complete map delivered with a prioritized hardening plan."
+          }
+        }
       ],
       "deliverables": [
-        { "label": { "fr": "Rapport de scan réseau", "en": "Network scan report" }, "file": "projects/network-scan/scan-report.docx" },
-        { "label": { "fr": "Liste des vulnérabilités", "en": "Vulnerabilities list" }, "file": "projects/network-scan/vulnerabilities.xlsx" },
-        { "label": { "fr": "Scénario d'analyse", "en": "Analysis scenario" }, "file": "projects/network-scan/scenario.docx" }
+        {
+          "label": {
+            "fr": "Rapport de scan réseau",
+            "en": "Network scan report"
+          },
+          "file": "projects/network-scan/scan-report.docx"
+        },
+        {
+          "label": {
+            "fr": "Liste des vulnérabilités",
+            "en": "Vulnerabilities list"
+          },
+          "file": "projects/network-scan/vulnerabilities.xlsx"
+        },
+        {
+          "label": {
+            "fr": "Scénario d'analyse",
+            "en": "Analysis scenario"
+          },
+          "file": "projects/network-scan/scenario.docx"
+        }
       ]
     },
     {
       "id": "log-analysis",
       "page": "project-log-analysis.html",
       "featured": false,
-      "title": { "fr": "Analyse de logs de sécurité", "en": "Security Log Analysis" },
-      "summary": {
-        "fr": "Corrélation d'événements et analyse temporelle des journaux système et réseau pour détecter des comportements suspects.",
-        "en": "Event correlation and timeline analysis of system and network logs to detect suspicious behavior."
+      "title": {
+        "fr": "Analyse de logs de sécurité",
+        "en": "Security Log Analysis"
       },
-      "level": { "fr": "Intermédiaire", "en": "Intermediate" },
+      "summary": {
+        "fr": "Étude de cas simulée. Corrélation d'événements et analyse temporelle des journaux système et réseau pour détecter des comportements suspects.",
+        "en": "Simulated case study. Event correlation and timeline analysis of system and network logs to detect suspicious behavior."
+      },
+      "level": {
+        "fr": "Intermédiaire",
+        "en": "Intermediate"
+      },
       "tools": "SIEM · Excel · Syslog",
-      "tags": ["SIEM", "Log Analysis", "SOC", "Detection"],
+      "tags": [
+        "SIEM",
+        "Log Analysis",
+        "SOC",
+        "Detection"
+      ],
       "sections": [
-        { "icon": "📌", "title": { "fr": "Contexte", "en": "Context" }, "text": { "fr": "Des alertes inhabituelles sont détectées dans les journaux systèmes.", "en": "Unusual alerts are detected in system logs." } },
-        { "icon": "🎯", "title": { "fr": "Objectif", "en": "Objective" }, "text": { "fr": "Identifier les événements anormaux et déterminer leur origine.", "en": "Identify abnormal events and determine their source." } },
-        { "icon": "🔍", "title": { "fr": "Analyse", "en": "Analysis" }, "text": { "fr": "Corrélation d'événements, analyse temporelle et détection d'anomalies dans Excel à partir des exports syslog.", "en": "Event correlation, timeline analysis and anomaly detection in Excel from syslog exports." } },
-        { "icon": "🛡️", "title": { "fr": "Actions", "en": "Actions" }, "text": { "fr": "Isolation du poste concerné et analyse approfondie des journaux.", "en": "Isolation of the affected workstation and deep log analysis." } },
-        { "icon": "✅", "title": { "fr": "Résultat", "en": "Outcome" }, "text": { "fr": "Incident maîtrisé et aucune compromission critique détectée.", "en": "Incident contained and no critical compromise detected." } }
+        {
+          "icon": "📌",
+          "title": {
+            "fr": "Contexte",
+            "en": "Context"
+          },
+          "text": {
+            "fr": "Scénario simulé : des alertes inhabituelles sont détectées dans les journaux systèmes.",
+            "en": "Simulated scenario: unusual alerts are detected in system logs."
+          }
+        },
+        {
+          "icon": "🎯",
+          "title": {
+            "fr": "Objectif",
+            "en": "Objective"
+          },
+          "text": {
+            "fr": "Identifier les événements anormaux et déterminer leur origine.",
+            "en": "Identify abnormal events and determine their source."
+          }
+        },
+        {
+          "icon": "🔍",
+          "title": {
+            "fr": "Analyse",
+            "en": "Analysis"
+          },
+          "text": {
+            "fr": "Corrélation d'événements, analyse temporelle et détection d'anomalies dans Excel à partir des exports syslog.",
+            "en": "Event correlation, timeline analysis and anomaly detection in Excel from syslog exports."
+          }
+        },
+        {
+          "icon": "🛡️",
+          "title": {
+            "fr": "Actions",
+            "en": "Actions"
+          },
+          "text": {
+            "fr": "Isolation du poste concerné et analyse approfondie des journaux.",
+            "en": "Isolation of the affected workstation and deep log analysis."
+          }
+        },
+        {
+          "icon": "✅",
+          "title": {
+            "fr": "Résultat",
+            "en": "Outcome"
+          },
+          "text": {
+            "fr": "Dans le scénario : incident maîtrisé et aucune compromission critique détectée.",
+            "en": "In the scenario: incident contained and no critical compromise detected."
+          }
+        }
       ],
       "deliverables": [
-        { "label": { "fr": "Rapport d'incident", "en": "Incident report" }, "file": "projects/log-analysis/incident-report.docx" },
-        { "label": { "fr": "Analyse des logs", "en": "Logs analysis" }, "file": "projects/log-analysis/logs-analysis.xlsx" },
-        { "label": { "fr": "Scénario d'incident", "en": "Incident scenario" }, "file": "projects/log-analysis/scenario.docx" }
+        {
+          "label": {
+            "fr": "Rapport d'incident",
+            "en": "Incident report"
+          },
+          "file": "projects/log-analysis/incident-report.docx"
+        },
+        {
+          "label": {
+            "fr": "Analyse des logs",
+            "en": "Logs analysis"
+          },
+          "file": "projects/log-analysis/logs-analysis.xlsx"
+        },
+        {
+          "label": {
+            "fr": "Scénario d'incident",
+            "en": "Incident scenario"
+          },
+          "file": "projects/log-analysis/scenario.docx"
+        }
       ]
     }
   ],
   "certifications": [
-    { "issuer": "Google", "name": { "fr": "Cybersecurity", "en": "Cybersecurity" }, "focus": { "fr": "SOC, SIEM et détection des menaces", "en": "SOC, SIEM and threat detection" }, "verify": "https://coursera.org/verify/professional-cert/LEQ85C0L7DA2", "pdf": "certificates/google-cybersecurity.pdf" },
-    { "issuer": "Google", "name": { "fr": "IT Support", "en": "IT Support" }, "focus": { "fr": "Systèmes, réseaux et dépannage", "en": "Systems, networking and troubleshooting" }, "verify": "https://coursera.org/verify/professional-cert/UB59KUP9YGYM", "pdf": "certificates/google-it-support.pdf" },
-    { "issuer": "Cisco", "name": { "fr": "Cybersecurity", "en": "Cybersecurity" }, "focus": { "fr": "Sécurité réseau, attaques et défense", "en": "Network security, attacks and defense" }, "verify": "https://www.credly.com/badges/171873e7-d34f-4f92-9b9a-35cc40ab7594/public_url", "pdf": "certificates/cisco-security.pdf" },
-    { "issuer": "Google", "name": { "fr": "Data Analytics", "en": "Data Analytics" }, "focus": { "fr": "Analyse de données et de logs", "en": "Data and log analysis" }, "verify": "https://coursera.org/verify/professional-cert/BNN0931M5VKC", "pdf": "certificates/google-data-analytics.pdf" },
-    { "issuer": "Google", "name": { "fr": "Project Management", "en": "Project Management" }, "focus": { "fr": "Planification et gestion de projet IT", "en": "IT project planning and management" }, "verify": "https://coursera.org/verify/professional-cert/BHWA5FOV7MJO", "pdf": "certificates/google-project-management.pdf" },
-    { "issuer": "Red Team Leaders", "name": { "fr": "CCEP, Red Team", "en": "CCEP, Red Team" }, "focus": { "fr": "Sécurité offensive et posture défensive", "en": "Offensive security and defensive posture" }, "verify": "https://courses.redteamleaders.com/exam-completion/8a2e2b31fad4e827", "pdf": "certificates/ccep-redteam.pdf" }
+    {
+      "issuer": "Google",
+      "name": {
+        "fr": "Cybersecurity",
+        "en": "Cybersecurity"
+      },
+      "focus": {
+        "fr": "SOC, SIEM et détection des menaces",
+        "en": "SOC, SIEM and threat detection"
+      },
+      "verify": "https://coursera.org/verify/professional-cert/LEQ85C0L7DA2",
+      "pdf": "certificates/google-cybersecurity.pdf"
+    },
+    {
+      "issuer": "Google",
+      "name": {
+        "fr": "IT Support",
+        "en": "IT Support"
+      },
+      "focus": {
+        "fr": "Systèmes, réseaux et dépannage",
+        "en": "Systems, networking and troubleshooting"
+      },
+      "verify": "https://coursera.org/verify/professional-cert/UB59KUP9YGYM",
+      "pdf": "certificates/google-it-support.pdf"
+    },
+    {
+      "issuer": "Cisco",
+      "name": {
+        "fr": "Cybersecurity",
+        "en": "Cybersecurity"
+      },
+      "focus": {
+        "fr": "Sécurité réseau, attaques et défense",
+        "en": "Network security, attacks and defense"
+      },
+      "verify": "https://www.credly.com/badges/171873e7-d34f-4f92-9b9a-35cc40ab7594/public_url",
+      "pdf": "certificates/cisco-security.pdf"
+    },
+    {
+      "issuer": "Google",
+      "name": {
+        "fr": "Data Analytics",
+        "en": "Data Analytics"
+      },
+      "focus": {
+        "fr": "Analyse de données et de logs",
+        "en": "Data and log analysis"
+      },
+      "verify": "https://coursera.org/verify/professional-cert/BNN0931M5VKC",
+      "pdf": "certificates/google-data-analytics.pdf"
+    },
+    {
+      "issuer": "Google",
+      "name": {
+        "fr": "Project Management",
+        "en": "Project Management"
+      },
+      "focus": {
+        "fr": "Planification et gestion de projet IT",
+        "en": "IT project planning and management"
+      },
+      "verify": "https://coursera.org/verify/professional-cert/BHWA5FOV7MJO",
+      "pdf": "certificates/google-project-management.pdf"
+    },
+    {
+      "issuer": "Red Team Leaders",
+      "name": {
+        "fr": "Certified Cybersecurity Educator Professional (CCEP)",
+        "en": "Certified Cybersecurity Educator Professional (CCEP)"
+      },
+      "focus": {
+        "fr": "Enseignement et sensibilisation à la cybersécurité",
+        "en": "Cybersecurity teaching and awareness"
+      },
+      "verify": "https://courses.redteamleaders.com/exam-completion/8a2e2b31fad4e827",
+      "pdf": "certificates/ccep-redteam.pdf"
+    }
   ],
   "skills": {
     "groups": [
       {
-        "title": { "fr": "Sécurité", "en": "Security" },
+        "title": {
+          "fr": "Sécurité",
+          "en": "Security"
+        },
         "items": [
-          { "fr": "Analyse des incidents de sécurité", "en": "Security incident analysis" },
-          { "fr": "Détection d'attaques réseau (DoS, brute force)", "en": "Network attack detection (DoS, brute force)" },
-          { "fr": "Analyse de logs, approche SOC et SIEM", "en": "Log analysis, SOC and SIEM approach" },
-          { "fr": "Scan réseau et identification des vulnérabilités", "en": "Network scanning and vulnerability identification" },
-          { "fr": "Analyse des risques", "en": "Risk analysis" }
+          {
+            "fr": "Analyse des incidents de sécurité",
+            "en": "Security incident analysis"
+          },
+          {
+            "fr": "Détection d'attaques réseau (DoS, brute force)",
+            "en": "Network attack detection (DoS, brute force)"
+          },
+          {
+            "fr": "Analyse de logs, approche SOC et SIEM",
+            "en": "Log analysis, SOC and SIEM approach"
+          },
+          {
+            "fr": "Scan réseau et identification des vulnérabilités",
+            "en": "Network scanning and vulnerability identification"
+          },
+          {
+            "fr": "Analyse des risques",
+            "en": "Risk analysis"
+          }
         ]
       },
       {
-        "title": { "fr": "Réseaux", "en": "Networking" },
+        "title": {
+          "fr": "Réseaux",
+          "en": "Networking"
+        },
         "items": [
-          { "fr": "Analyse approfondie TCP/IP", "en": "Advanced TCP/IP analysis" },
-          { "fr": "Segmentation réseau (VLAN – concepts)", "en": "Network segmentation (VLAN – concepts)" },
-          { "fr": "Notions de routage statique", "en": "Static routing fundamentals" },
-          { "fr": "Configuration de pare-feu (bases)", "en": "Firewall configuration (basics)" },
-          { "fr": "Architecture LAN & compréhension WAN", "en": "LAN architecture & WAN fundamentals" }
+          {
+            "fr": "Analyse approfondie TCP/IP",
+            "en": "Advanced TCP/IP analysis"
+          },
+          {
+            "fr": "Segmentation réseau (VLAN – concepts)",
+            "en": "Network segmentation (VLAN – concepts)"
+          },
+          {
+            "fr": "Notions de routage statique",
+            "en": "Static routing fundamentals"
+          },
+          {
+            "fr": "Configuration de pare-feu (bases)",
+            "en": "Firewall configuration (basics)"
+          },
+          {
+            "fr": "Architecture LAN & compréhension WAN",
+            "en": "LAN architecture & WAN fundamentals"
+          }
         ]
       },
       {
-        "title": { "fr": "Administration IT", "en": "IT Administration" },
+        "title": {
+          "fr": "Administration IT",
+          "en": "IT Administration"
+        },
         "items": [
-          { "fr": "Installation et configuration Windows & Linux", "en": "Windows & Linux installation and configuration" },
-          { "fr": "Support technique niveau 1 & 2", "en": "Level 1 & 2 technical support" },
-          { "fr": "Gestion des comptes utilisateurs et contrôle d'accès", "en": "User account management and access control" },
-          { "fr": "Configuration réseau (IP, DNS, DHCP)", "en": "Network configuration (IP, DNS, DHCP)" },
-          { "fr": "Virtualisation (environnements de test)", "en": "Virtualization (test environments)" }
+          {
+            "fr": "Installation et configuration Windows & Linux",
+            "en": "Windows & Linux installation and configuration"
+          },
+          {
+            "fr": "Support technique niveau 1 & 2",
+            "en": "Level 1 & 2 technical support"
+          },
+          {
+            "fr": "Gestion des comptes utilisateurs et contrôle d'accès",
+            "en": "User account management and access control"
+          },
+          {
+            "fr": "Configuration réseau (IP, DNS, DHCP)",
+            "en": "Network configuration (IP, DNS, DHCP)"
+          },
+          {
+            "fr": "Virtualisation (environnements de test)",
+            "en": "Virtualization (test environments)"
+          }
         ]
       }
     ],
-    "tools": ["Wireshark", "Nmap", "Linux", "Pare-feu", "GitHub", "Excel"]
+    "tools": [
+      "Wireshark",
+      "Nmap",
+      "Linux",
+      "Pare-feu",
+      "GitHub",
+      "Excel"
+    ]
   },
   "news": [
     {
-      "title": { "fr": "Avancement du projet DoS SYN Flood", "en": "DoS SYN Flood project update" },
-      "text": { "fr": "Suivi détaillé de l'investigation et des prochaines étapes sur Notion.", "en": "Detailed tracking of the investigation and next steps on Notion." },
+      "title": {
+        "fr": "Avancement du projet DoS SYN Flood",
+        "en": "DoS SYN Flood project update"
+      },
+      "text": {
+        "fr": "Suivi détaillé de l'investigation et des prochaines étapes sur Notion.",
+        "en": "Detailed tracking of the investigation and next steps on Notion."
+      },
       "url": "https://chambray-pencil-7a7.notion.site/Avancement-DoS-SYN-Flood-2ecfcb1613818047b841cd8e538c2f0c?source=copy_link"
+    }
+  ],
+  "experience": [
+    {
+      "role": {
+        "fr": "Stagiaire – Service Réseaux informatiques et Télécommunications",
+        "en": "Intern – IT Networks and Telecommunications Service"
+      },
+      "org": "Banque Centrale du Congo (BCC), Kinshasa",
+      "period": {
+        "fr": "17 septembre – 16 octobre 2026",
+        "en": "17 September – 16 October 2026"
+      },
+      "points": [
+        {
+          "fr": "Participation à l'exploitation du réseau de la DSI : tirage de lignes Ethernet, sertissage RJ45, pose de prises murales, tests de continuité.",
+          "en": "Took part in operating the IT department's network: Ethernet cabling, RJ45 crimping, wall outlets, continuity tests."
+        },
+        {
+          "fr": "Diagnostic et résolution de pannes de connectivité par couches (physique, commutation, IP, proxy).",
+          "en": "Diagnosed and fixed connectivity faults layer by layer (physical, switching, IP, proxy)."
+        },
+        {
+          "fr": "Raccordement de postes et d'imprimantes, installation de points d'accès Wi-Fi, observation de la supervision du réseau.",
+          "en": "Connected workstations and printers, installed Wi-Fi access points, observed network monitoring."
+        }
+      ]
+    },
+    {
+      "role": {
+        "fr": "Mémoire de Master 2 – maturité en cybersécurité des institutions financières en RDC",
+        "en": "Master's 2 thesis – cybersecurity maturity of financial institutions in the DRC"
+      },
+      "org": "Université de Kinshasa (UNIKIN)",
+      "period": {
+        "fr": "Diplôme attendu en novembre 2026",
+        "en": "Degree expected in November 2026"
+      },
+      "points": [
+        {
+          "fr": "Évaluation de la maturité à partir des cadres NIST CSF 2.0 et ISO 27001, avec un questionnaire de 72 items.",
+          "en": "Maturity assessment based on the NIST CSF 2.0 and ISO 27001 frameworks, with a 72-item questionnaire."
+        }
+      ]
+    },
+    {
+      "role": {
+        "fr": "Stagiaire",
+        "en": "Intern"
+      },
+      "org": "Régie des Voies Aériennes (RVA), N'Djili",
+      "period": {
+        "fr": "2023 (2 mois)",
+        "en": "2023 (2 months)"
+      },
+      "points": [
+        {
+          "fr": "Participation à des simulations de réseau.",
+          "en": "Took part in network simulations."
+        },
+        {
+          "fr": "Sauvegardes et images système avec Clonezilla.",
+          "en": "Backups and system images with Clonezilla."
+        },
+        {
+          "fr": "Détection des services en panne et monitoring des systèmes.",
+          "en": "Detection of failed services and system monitoring."
+        }
+      ]
+    }
+  ],
+  "realisations": [
+    {
+      "title": {
+        "fr": "Site web de l'ONGD SALAAM",
+        "en": "ONGD SALAAM website"
+      },
+      "summary": {
+        "fr": "Site institutionnel de l'ONGD SALAAM (Gbadolite, Nord-Ubangi) : mission, domaines d'intervention, équipe, projets, actualités et contacts, avec un tableau de bord d'administration pour publier le contenu.",
+        "en": "Institutional website of ONGD SALAAM (Gbadolite, North Ubangi): mission, fields of action, team, projects, news and contacts, with an admin dashboard to publish content."
+      },
+      "tools": "Next.js · Vercel",
+      "tags": [
+        "Next.js",
+        "Vercel",
+        "Web",
+        "ONG"
+      ],
+      "url": "https://ongd-salaam.vercel.app"
     }
   ]
 }
