@@ -334,7 +334,7 @@ function renderSkills() {
 const NEWS_TYPES = [
   ["image", "Photo (ou GIF animé)"],
   ["video", "Vidéo (fichier MP4 ou WebM)"],
-  ["embed", "Vidéo en ligne (YouTube, Vimeo, TikTok, Facebook, Instagram…)"],
+  ["embed", "Vidéo ou publication en ligne (YouTube, LinkedIn, TikTok, Facebook…)"],
   ["link", "Article ou lien"],
   ["text", "Texte seul"]
 ];
@@ -410,7 +410,7 @@ function renderNews() {
 
       // --- Média selon le type ---
       if (n.type === "embed") {
-        const f = field("Lien de la vidéo (copie l'adresse depuis YouTube, TikTok, etc.)", n.media, v => { n.media = v; check(); });
+        const f = field("Lien ou code d'intégration (YouTube, LinkedIn, TikTok…)", n.media, v => { n.media = v; check(); });
         function check() {
           const info = parseEmbed(n.media);
           if (!n.media) { hint.textContent = ""; hint.className = "admin-hint"; }
@@ -463,7 +463,13 @@ function renderNews() {
       }
 
       if (n.type === "link") {
-        parts.push(field("Lien (URL de l'article, Notion, LinkedIn…)", n.url, v => n.url = v));
+        const lf = field("Lien (URL de l'article, Notion…)", n.url, v => {
+          n.url = v;
+          const info = parseEmbed(v);
+          hint.textContent = info ? `✓ ${info.name} reconnu : cette publication s'affichera directement sur le site.` : "";
+          hint.className = "admin-hint" + (info ? " ok" : "");
+        });
+        parts.push(lf, hint);
       } else if (n.type !== "embed") {
         parts.push(field("Lien « En savoir plus » (facultatif)", n.url, v => n.url = v));
       }

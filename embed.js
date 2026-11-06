@@ -6,6 +6,9 @@
 
 function parseEmbed(raw) {
   if (!raw) return null;
+  // Accepte aussi un code <iframe ...> collé tel quel : on en extrait l'adresse (src)
+  const fromIframe = String(raw).match(/<iframe[^>]*\ssrc=["']([^"']+)["']/i);
+  if (fromIframe) raw = fromIframe[1].replace(/&amp;/g, "&");
   let u;
   try { u = new URL(String(raw).trim()); } catch { return null; }
   if (!/^https?:$/.test(u.protocol)) return null;
@@ -56,6 +59,21 @@ function parseEmbed(raw) {
   if (host === "instagram.com") {
     m = path.match(/^\/(p|reel|tv)\/([\w-]+)/);
     if (m) return { provider: "instagram", name: "Instagram", vertical: true, src: `https://www.instagram.com/${m[1]}/${m[2]}/embed` };
+    return null;
+  }
+
+  // LinkedIn : code d'intégration, lien de publication ou lien /posts/…
+  if (host === "linkedin.com") {
+    let urn = null;
+    if ((m = path.match(/^\/(?:embed\/)?feed\/update\/(urn:li:(?:share|ugcPost|activity):\d+)/))) urn = m[1];
+    else if ((m = path.match(/activity-(\d{10,})/))) urn = `urn:li:activity:${m[1]}`;
+    if (urn) {
+      return {
+        provider: "linkedin", name: "LinkedIn", vertical: false, tall: true,
+        src: `https://www.linkedin.com/embed/feed/update/${urn}`,
+        link: `https://www.linkedin.com/feed/update/${urn}/`
+      };
+    }
     return null;
   }
 

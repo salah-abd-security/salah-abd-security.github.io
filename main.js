@@ -390,19 +390,29 @@ function renderAbout(data, lang) {
 const NEWS_PAGE_SIZE = 9;
 
 function newsKind(n) {
-  if (n.type) return n.type;
-  return n.url ? "link" : "text";
+  const k = n.type || (n.url ? "link" : "text");
+  // Un « lien » qui est en fait une vidéo ou une publication intégrable s'affiche directement
+  if (k === "link" && parseEmbed(n.url)) return "embed";
+  return k;
 }
 
 function newsGroup(n) {
   const k = newsKind(n);
   if (k === "image") return "photo";
-  if (k === "video" || k === "embed") return "video";
+  if (k === "embed") {
+    const info = parseEmbed(n.media || n.url);
+    return info && info.provider === "linkedin" ? "article" : "video";
+  }
+  if (k === "video") return "video";
   return "article";
 }
 
-function newsLabel(kind, lang) {
+function newsLabel(kind, lang, n) {
   const fr = lang === "fr";
+  if (kind === "embed" && n) {
+    const info = parseEmbed(n.media || n.url);
+    if (info && info.provider === "linkedin") return "LinkedIn";
+  }
   if (kind === "image") return "Photo";
   if (kind === "video" || kind === "embed") return fr ? "Vidéo" : "Video";
   return fr ? "Article" : "Article";
@@ -512,7 +522,7 @@ function buildNewsMedia(n, lang) {
     } else {
       frame.append(makeIframe(info.src, title || info.name));
     }
-    return el("div", { class: "news-media" + (info.vertical ? " vertical" : "") }, [frame]);
+    return el("div", { class: "news-media" + (info.vertical ? " vertical" : "") + (info.tall ? " tall" : "") }, [frame]);
   }
   return null;
 }
@@ -524,7 +534,7 @@ function buildNewsCard(n, lang) {
 
   const meta = el("div", { class: "news-meta" });
   if (n.date) meta.append(el("time", { datetime: n.date, text: formatNewsDate(n.date, lang) }));
-  meta.append(el("span", { class: "news-badge", text: newsLabel(kind, lang) }));
+  meta.append(el("span", { class: "news-badge", text: newsLabel(kind, lang, n) }));
 
   const body = el("div", { class: "news-body" }, [meta]);
   const title = t(n.title, lang), text = t(n.text, lang);
@@ -534,8 +544,8 @@ function buildNewsCard(n, lang) {
   // Lien d'action
   let href = null, label = null;
   if (kind === "embed") {
-    href = safeUrl(n.media || n.url);
-    const info = parseEmbed(href);
+    const info = parseEmbed(n.media || n.url);
+    href = safeUrl(info ? (info.link || (n.media || n.url)) : (n.media || n.url));
     label = info ? (fr ? `Voir sur ${info.name}` : `Watch on ${info.name}`) : (fr ? "Ouvrir le lien" : "Open link");
   } else if (safeUrl(n.url)) {
     href = n.url;

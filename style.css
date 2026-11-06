@@ -376,3 +376,6 @@ footer a:hover{color:var(--ink)}
 
 .footer-admin{font-size:13px;color:var(--muted);opacity:.7}
 .footer-admin:hover{opacity:1}
+
+.news-media.tall{aspect-ratio:auto;height:560px;background:#fff}
+.news-body p{white-space:pre-line}
