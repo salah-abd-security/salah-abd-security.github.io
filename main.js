@@ -72,7 +72,8 @@ function buildFooter(lang) {
   const footer = el("footer");
   footer.append(el("div", { class: "wrap" }, [
     el("span", {}, `© 2026 Salahadine Abdassama`),
-    el("span", {}, lang === "fr" ? "Analyste cybersécurité, SOC et Blue Team" : "Cybersecurity Analyst, SOC & Blue Team")
+    el("span", {}, lang === "fr" ? "Analyste cybersécurité, SOC et Blue Team" : "Cybersecurity Analyst, SOC & Blue Team"),
+    el("a", { href: "admin.html", class: "footer-admin", rel: "nofollow" }, "Admin")
   ]));
   return footer;
 }
