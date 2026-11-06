@@ -331,26 +331,152 @@ function renderSkills() {
 
 /* ---------------- Actualités ---------------- */
 
+const NEWS_TYPES = [
+  ["image", "Photo (ou GIF animé)"],
+  ["video", "Vidéo (fichier MP4 ou WebM)"],
+  ["embed", "Vidéo en ligne (YouTube, Vimeo, TikTok, Facebook, Instagram…)"],
+  ["link", "Article ou lien"],
+  ["text", "Texte seul"]
+];
+
+function todayISO() {
+  const d = new Date();
+  const pad = n => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function slugify(s) {
+  return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "image";
+}
+
+function downloadBlob(blob, filename) {
+  const a = el("a", { href: URL.createObjectURL(blob), download: filename });
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+// Réduit une photo à 1600 px max (JPEG) pour garder le site rapide.
+async function optimizeImage(file, maxSide = 1600, quality = 0.85) {
+  const bmp = await createImageBitmap(file);
+  const ratio = Math.min(1, maxSide / Math.max(bmp.width, bmp.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bmp.width * ratio);
+  canvas.height = Math.round(bmp.height * ratio);
+  canvas.getContext("2d").drawImage(bmp, 0, 0, canvas.width, canvas.height);
+  return new Promise(res => canvas.toBlob(res, "image/jpeg", quality));
+}
+
+function emptyNews() {
+  return { id: "n-" + uid(), type: "image", date: todayISO(), title: { fr: "", en: "" }, text: { fr: "", en: "" }, media: "", url: "" };
+}
+
 function renderNews() {
   const panel = document.getElementById("panel-news");
   panel.innerHTML = "";
   const list = el("div", { class: "sub-list" });
+
   function draw() {
     list.innerHTML = "";
     state.news.forEach((n, i) => {
-      list.append(el("div", { class: "admin-item" }, [
-        el("div", { class: "admin-item-head" }, [
-          el("strong", { text: n.title.fr || "Actualité" }),
-          removeBtn(() => { state.news.splice(i, 1); saveDraft(); draw(); })
+      if (!n.type) n.type = n.url ? "link" : "text";
+      const hint = el("p", { class: "admin-hint" });
+
+      const typeSelect = el("select", {}, NEWS_TYPES.map(([v, label]) => {
+        const o = el("option", { value: v }, label);
+        if (v === n.type) o.selected = true;
+        return o;
+      }));
+      typeSelect.addEventListener("change", () => { n.type = typeSelect.value; saveDraft(); draw(); });
+
+      const dateInput = el("input", { type: "date", value: n.date || "" });
+      dateInput.addEventListener("input", () => { n.date = dateInput.value; saveDraft(); });
+
+      const head = el("div", { class: "admin-item-head" }, [
+        el("strong", { text: (n.title && n.title.fr) || "Nouvelle actualité" }),
+        removeBtn(() => { state.news.splice(i, 1); saveDraft(); draw(); })
+      ]);
+
+      const parts = [
+        head,
+        el("div", { class: "admin-row2" }, [
+          el("div", { class: "admin-field" }, [el("label", { text: "Type de publication" }), typeSelect]),
+          el("div", { class: "admin-field" }, [el("label", { text: "Date" }), dateInput])
         ]),
         biField("Titre", n.title, v => n.title.fr = v, v => n.title.en = v),
-        biField("Texte", n.text, v => n.text.fr = v, v => n.text.en = v, true),
-        field("Lien (URL)", n.url, v => n.url = v)
-      ]));
+        biField("Texte", n.text, v => n.text.fr = v, v => n.text.en = v, true)
+      ];
+
+      // --- Média selon le type ---
+      if (n.type === "embed") {
+        const f = field("Lien de la vidéo (copie l'adresse depuis YouTube, TikTok, etc.)", n.media, v => { n.media = v; check(); });
+        function check() {
+          const info = parseEmbed(n.media);
+          if (!n.media) { hint.textContent = ""; hint.className = "admin-hint"; }
+          else if (info) { hint.textContent = `✓ Lien ${info.name} reconnu : la vidéo sera lisible directement sur le site.`; hint.className = "admin-hint ok"; }
+          else { hint.textContent = "Lien non reconnu comme vidéo intégrable : il s'affichera comme un simple lien. Utilise l'adresse complète de la vidéo (pas celle de la chaîne)."; hint.className = "admin-hint warn"; }
+        }
+        check();
+        parts.push(f, hint);
+      }
+
+      if (n.type === "image" || n.type === "video") {
+        const isImg = n.type === "image";
+        const f = field(isImg ? "Chemin de l'image" : "Chemin de la vidéo", n.media, v => n.media = v);
+        const file = el("input", { type: "file", accept: isImg ? "image/*" : "video/mp4,video/webm" });
+        file.addEventListener("change", async () => {
+          const chosen = file.files[0];
+          if (!chosen) return;
+          const base = `${n.date || todayISO()}-${slugify((n.title && n.title.fr) || chosen.name.replace(/\.[^.]+$/, ""))}`;
+          if (isImg && chosen.type !== "image/gif") {
+            const blob = await optimizeImage(chosen);
+            const name = `${base}.jpg`;
+            downloadBlob(blob, name);
+            n.media = `assets/news/${name}`;
+            hint.textContent = `Photo optimisée téléchargée sous « ${name} ». Place-la dans le dossier assets/news/ du dépôt GitHub.`;
+            hint.className = "admin-hint ok";
+          } else {
+            const ext = chosen.name.split(".").pop().toLowerCase();
+            const name = `${base}.${ext}`;
+            n.media = `assets/news/${name}`;
+            const mb = (chosen.size / 1048576).toFixed(1);
+            hint.textContent = `Renomme ton fichier en « ${name} » et place-le dans assets/news/ du dépôt. Taille : ${mb} Mo.` +
+              (chosen.size > 25 * 1048576 ? " Attention : fichier lourd (le site sera lent, GitHub refuse au-delà de 100 Mo). Mieux vaut publier la vidéo sur YouTube et choisir « Vidéo en ligne »." : "");
+            hint.className = "admin-hint" + (chosen.size > 25 * 1048576 ? " warn" : " ok");
+          }
+          saveDraft();
+          draw();
+          // le message d'aide est perdu au redessin : on le réaffiche
+          const again = list.children[i].querySelector(".admin-hint");
+          if (again) { again.textContent = hint.textContent; again.className = hint.className; }
+        });
+        parts.push(f, el("div", { class: "admin-file" }, [file]), hint);
+        if (!isImg) {
+          parts.push(el("label", { class: "admin-check" }, [
+            el("input", { type: "checkbox", ...(n.loop ? { checked: "checked" } : {}), onchange: e => { n.loop = e.target.checked; saveDraft(); } }),
+            "Animation : lecture en boucle, sans son ni commandes"
+          ]));
+        } else {
+          hint.textContent = hint.textContent || "Pour un GIF animé, choisis le fichier .gif : il est utilisé tel quel.";
+        }
+      }
+
+      if (n.type === "link") {
+        parts.push(field("Lien (URL de l'article, Notion, LinkedIn…)", n.url, v => n.url = v));
+      } else if (n.type !== "embed") {
+        parts.push(field("Lien « En savoir plus » (facultatif)", n.url, v => n.url = v));
+      }
+
+      list.append(el("div", { class: "admin-item" }, parts));
     });
   }
   draw();
-  panel.append(list, el("button", { class: "btn btn-primary admin-add", onclick: () => { state.news.push({ title: { fr: "", en: "" }, text: { fr: "", en: "" }, url: "" }); saveDraft(); draw(); } }, "+ Ajouter une actualité"));
+  panel.append(
+    el("p", { class: "admin-note", text: "Les actualités s'affichent de la plus récente à la plus ancienne ; les 3 dernières apparaissent aussi sur la page d'accueil." }),
+    list,
+    el("button", { class: "btn btn-primary admin-add", onclick: () => { state.news.unshift(emptyNews()); saveDraft(); draw(); } }, "+ Ajouter une actualité")
+  );
 }
 
 /* ---------------- Tabs & boot ---------------- */

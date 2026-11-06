@@ -120,6 +120,7 @@ function renderHome(data, lang) {
     ])
   ]));
 
+  renderNewsHome(data, lang);
   renderProjects(data, lang, true);
 
   const certSection = document.getElementById("certs-preview-slot");
@@ -383,24 +384,243 @@ function renderAbout(data, lang) {
   }
 }
 
+/* ---------------- Actualités ---------------- */
+
+const NEWS_PAGE_SIZE = 9;
+
+function newsKind(n) {
+  if (n.type) return n.type;
+  return n.url ? "link" : "text";
+}
+
+function newsGroup(n) {
+  const k = newsKind(n);
+  if (k === "image") return "photo";
+  if (k === "video" || k === "embed") return "video";
+  return "article";
+}
+
+function newsLabel(kind, lang) {
+  const fr = lang === "fr";
+  if (kind === "image") return "Photo";
+  if (kind === "video" || kind === "embed") return fr ? "Vidéo" : "Video";
+  return fr ? "Article" : "Article";
+}
+
+function formatNewsDate(d, lang) {
+  const date = new Date(d + "T00:00:00");
+  if (isNaN(date)) return "";
+  return date.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-GB", { day: "numeric", month: "long", year: "numeric" });
+}
+
+// Plus récent d'abord ; les actualités sans date passent après.
+function sortedNews(data) {
+  return (data.news || [])
+    .map((n, i) => ({ n, i }))
+    .sort((a, b) => {
+      const da = a.n.date || "", db = b.n.date || "";
+      if (da === db) return a.i - b.i;
+      if (!da) return 1;
+      if (!db) return -1;
+      return da < db ? 1 : -1;
+    })
+    .map(x => x.n);
+}
+
+function safeUrl(u) {
+  return u && !/^\s*(javascript|data):/i.test(u) ? u : null;
+}
+
+function openLightbox(src, alt, lang) {
+  let box = document.getElementById("lightbox");
+  if (!box) {
+    box = el("div", { id: "lightbox", class: "lightbox", role: "dialog", "aria-modal": "true" }, [
+      el("button", { class: "lightbox-close", type: "button", "aria-label": lang === "fr" ? "Fermer" : "Close", html: "&times;" }),
+      el("img", { alt: "" })
+    ]);
+    box.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+    document.body.appendChild(box);
+  }
+  const img = box.querySelector("img");
+  img.src = src;
+  img.alt = alt || "";
+  box.classList.add("open");
+  box.querySelector("button").focus();
+}
+
+function closeLightbox() {
+  const box = document.getElementById("lightbox");
+  if (box) box.classList.remove("open");
+}
+
+function makeIframe(src, title) {
+  return el("iframe", {
+    src, title, loading: "lazy", frameborder: "0", allowfullscreen: "",
+    allow: "autoplay; encrypted-media; picture-in-picture; fullscreen",
+    referrerpolicy: "strict-origin-when-cross-origin"
+  });
+}
+
+function buildNewsMedia(n, lang) {
+  const fr = lang === "fr";
+  const kind = newsKind(n);
+  const title = t(n.title, lang);
+  const media = safeUrl(n.media);
+  if (!media && kind !== "embed") return null;
+
+  if (kind === "image") {
+    const btn = el("button", {
+      class: "news-media news-media-image", type: "button",
+      "aria-label": (fr ? "Agrandir l'image : " : "Enlarge image: ") + (title || "")
+    }, [el("img", { src: media, alt: title, loading: "lazy" })]);
+    btn.addEventListener("click", () => openLightbox(media, title, lang));
+    return btn;
+  }
+
+  if (kind === "video") {
+    const v = el("video", { src: media, playsinline: "", preload: "metadata" });
+    if (n.poster && safeUrl(n.poster)) v.setAttribute("poster", n.poster);
+    if (n.loop) {
+      // Animation : lecture en boucle, sans son, sans commandes
+      v.muted = true; v.loop = true; v.autoplay = true;
+      v.setAttribute("muted", ""); v.setAttribute("aria-label", title);
+    } else {
+      v.controls = true;
+    }
+    return el("div", { class: "news-media" }, [v]);
+  }
+
+  if (kind === "embed") {
+    const info = parseEmbed(n.media || n.url);
+    if (!info) return null;
+    const frame = el("div", { class: "news-frame" });
+    if (info.thumb) {
+      // Chargement à la demande : la vignette s'affiche, le lecteur ne se charge qu'au clic
+      const play = el("button", {
+        class: "news-play", type: "button",
+        "aria-label": (fr ? "Lire la vidéo : " : "Play video: ") + (title || info.name)
+      }, [
+        el("img", { src: info.thumb, alt: "", loading: "lazy" }),
+        el("span", { class: "news-play-icon", "aria-hidden": "true" })
+      ]);
+      play.addEventListener("click", () => {
+        frame.replaceChildren(makeIframe(info.src + (info.src.includes("?") ? "&" : "?") + "autoplay=1", title || info.name));
+      });
+      frame.append(play);
+    } else {
+      frame.append(makeIframe(info.src, title || info.name));
+    }
+    return el("div", { class: "news-media" + (info.vertical ? " vertical" : "") }, [frame]);
+  }
+  return null;
+}
+
+function buildNewsCard(n, lang) {
+  const fr = lang === "fr";
+  const kind = newsKind(n);
+  const media = buildNewsMedia(n, lang);
+
+  const meta = el("div", { class: "news-meta" });
+  if (n.date) meta.append(el("time", { datetime: n.date, text: formatNewsDate(n.date, lang) }));
+  meta.append(el("span", { class: "news-badge", text: newsLabel(kind, lang) }));
+
+  const body = el("div", { class: "news-body" }, [meta]);
+  const title = t(n.title, lang), text = t(n.text, lang);
+  if (title) body.append(el("h3", { text: title }));
+  if (text) body.append(el("p", { text }));
+
+  // Lien d'action
+  let href = null, label = null;
+  if (kind === "embed") {
+    href = safeUrl(n.media || n.url);
+    const info = parseEmbed(href);
+    label = info ? (fr ? `Voir sur ${info.name}` : `Watch on ${info.name}`) : (fr ? "Ouvrir le lien" : "Open link");
+  } else if (safeUrl(n.url)) {
+    href = n.url;
+    if (/notion\./i.test(href)) label = fr ? "Consulter sur Notion" : "Read on Notion";
+    else label = kind === "link" ? (fr ? "Ouvrir le lien" : "Open link") : (fr ? "En savoir plus" : "Learn more");
+  }
+  if (href) body.append(el("a", { href, target: "_blank", rel: "noopener" }, label + " →"));
+
+  return el("article", { class: "news-card" + (media ? "" : " no-media") }, [media, body]);
+}
+
+function renderNewsHome(data, lang) {
+  const slot = document.getElementById("news-slot");
+  if (!slot) return;
+  slot.innerHTML = "";
+  const items = sortedNews(data).slice(0, 3);
+  if (!items.length) return;
+  const fr = lang === "fr";
+  slot.append(el("section", { class: "section-alt" }, [
+    el("div", { class: "wrap" }, [
+      el("div", { class: "section-head" }, [
+        el("h2", { text: fr ? "Actualités récentes" : "Latest news" }),
+        el("p", {}, [
+          fr ? "Photos, vidéos et nouvelles du parcours. " : "Photos, videos and news from my journey. ",
+          el("a", { href: "blog.html" }, fr ? "Toutes les actualités →" : "All news →")
+        ])
+      ]),
+      el("div", { class: "news-grid" }, items.map(n => buildNewsCard(n, lang)))
+    ])
+  ]));
+}
+
 function renderBlog(data, lang) {
+  const fr = lang === "fr";
   const slot = document.getElementById("blog-slot");
   slot.innerHTML = "";
+  const all = sortedNews(data);
+
+  const filters = [
+    { key: "all", label: fr ? "Tout" : "All" },
+    { key: "photo", label: "Photos" },
+    { key: "video", label: fr ? "Vidéos" : "Videos" },
+    { key: "article", label: fr ? "Articles et liens" : "Articles & links" }
+  ].filter(f => f.key === "all" || all.some(n => newsGroup(n) === f.key));
+
+  let active = "all";
+  let shown = NEWS_PAGE_SIZE;
+
+  const filterBar = el("div", { class: "news-filters", role: "group", "aria-label": fr ? "Filtrer les actualités" : "Filter news" });
+  const grid = el("div", { class: "news-grid" });
+  const moreWrap = el("div", { class: "news-more" });
+
+  function draw() {
+    const list = all.filter(n => active === "all" || newsGroup(n) === active);
+    grid.innerHTML = "";
+    list.slice(0, shown).forEach(n => grid.append(buildNewsCard(n, lang)));
+    if (!list.length) grid.append(el("p", { class: "news-empty", text: fr ? "Aucune actualité pour le moment." : "No news yet." }));
+    moreWrap.innerHTML = "";
+    if (list.length > shown) {
+      const more = el("button", { class: "btn btn-outline", type: "button" }, fr ? "Voir plus" : "Show more");
+      more.addEventListener("click", () => { shown += NEWS_PAGE_SIZE; draw(); });
+      moreWrap.append(more);
+    }
+    filterBar.querySelectorAll(".news-filter").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.key === active)));
+  }
+
+  if (filters.length > 2) {
+    filters.forEach(f => {
+      const b = el("button", { class: "news-filter", type: "button", "data-key": f.key }, f.label);
+      b.addEventListener("click", () => { active = f.key; shown = NEWS_PAGE_SIZE; draw(); });
+      filterBar.append(b);
+    });
+  }
+
   slot.append(el("section", {}, [
     el("div", { class: "wrap" }, [
       el("div", { class: "section-head" }, [
-        el("h2", { text: lang === "fr" ? "Actualités" : "News" }),
-        el("p", { text: lang === "fr" ? "Avancement des projets et analyses SOC." : "Project progress and SOC write-ups." })
+        el("h2", { text: fr ? "Actualités" : "News" }),
+        el("p", { text: fr ? "Photos, vidéos et nouvelles du parcours, des projets et des analyses SOC." : "Photos, videos and news on my journey, projects and SOC write-ups." })
       ]),
-      el("div", { style: "display:flex;flex-direction:column;gap:20px" }, data.news.map(n =>
-        el("article", { class: "blog-card" }, [
-          el("h3", { text: t(n.title, lang) }),
-          el("p", { text: t(n.text, lang) }),
-          el("a", { href: n.url, target: "_blank", rel: "noopener" }, lang === "fr" ? "Consulter sur Notion →" : "Read on Notion →")
-        ])
-      ))
+      filters.length > 2 ? filterBar : null,
+      grid,
+      moreWrap
     ])
   ]));
+  draw();
 }
 
 /* ---------------- Boot ---------------- */

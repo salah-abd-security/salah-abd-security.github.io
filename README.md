@@ -14,6 +14,8 @@ demande jamais de toucher au HTML.
 - `style.css` — design system (couleurs, typographie, mise en page)
 - `content.json` — tout le contenu du site
 - `main.js` — moteur de rendu des pages publiques
+- `embed.js` — reconnaissance des liens vidéo (YouTube, Vimeo, TikTok…)
+- `assets/news/` — photos et vidéos des actualités
 - `admin.html` / `admin.js` — espace d'administration (voir ci-dessous)
 - `index.html`, `about.html`, `projects.html`, `certifications.html`,
   `skills.html`, `blog.html`, `project-*.html` — coquilles de page
@@ -34,6 +36,23 @@ les visiteurs voient les changements :
 Cette page n'est pas protégée par mot de passe : elle ne modifie rien tant
 que le fichier n'est pas repoussé sur GitHub, mais évite d'y mettre un lien
 public si tu préfères la garder discrète.
+
+## Publier une actualité
+
+Dans l'admin, onglet **Actualités** → **+ Ajouter une actualité**, puis choisis le type :
+
+- **Photo** : choisis l'image, elle est réduite automatiquement et téléchargée ;
+  place ce fichier dans `assets/news/`. Les GIF animés fonctionnent aussi.
+- **Vidéo (fichier)** : place le MP4/WebM dans `assets/news/` (idéalement moins de
+  25 Mo). Case « Animation » = lecture en boucle, sans son.
+- **Vidéo en ligne** : colle simplement le lien de la vidéo (YouTube, Vimeo,
+  TikTok, Facebook, Instagram, Dailymotion). Rien à téléverser.
+- **Article ou lien** / **Texte seul**.
+
+Les actualités s'affichent de la plus récente à la plus ancienne sur `blog.html`,
+et les **3 dernières** apparaissent aussi sur la page d'accueil. Ensuite :
+télécharge `content.json`, remplace-le dans le dépôt, ajoute les fichiers de
+`assets/news/` puis `git add . && git commit && git push`.
 
 ## 🎯 Profil
 Analyste de sécurité informatique, spécialisé en analyse des risques,
