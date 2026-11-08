@@ -529,6 +529,21 @@
   },
   "news": [
     {
+      "id": "n-qvew10u",
+      "type": "image",
+      "date": "2026-11-08",
+      "title": {
+        "fr": "🎓 C'est fait : Master défendu !",
+        "en": "🎓 Done! Master's degree successfully defended!"
+      },
+      "text": {
+        "fr": " Le 3 novembre 2026, j'ai soutenu mon mémoire de Master à l'Université de Kinshasa (UNIKIN), Faculté des Sciences et Technologies, option Réseaux et Sécurité Informatique.\n📌 Sujet : Évaluation de la maturité en cybersécurité des institutions financières et banques en RDC, cas de la Banque Centrale du Congo, avec pour référentiels NIST CSF 2.0 et ISO/IEC 27001.\nCe travail m'a rappelé une chose : la cybersécurité n'est pas seulement une affaire de technologie, c'est un enjeu de confiance, de gouvernance et de souveraineté pour nos institutions financières.\n🙏 Merci à mon directeur, le Professeur Paulin BOALE, aux membres du jury, à la BCC pour l'accueil, à ma famille, à mes amis et à tous ceux qui m'ont soutenu tout au long du parcours.\n🚀 Et maintenant, un nouveau chapitre commence : le doctorat. Plus de recherche, plus d'impact, toujours au service de la cybersécurité en RDC et en Afrique.\nJe suis ouvert aux échanges, collaborations et opportunités autour de la cybersécurité, de la gouvernance des risques et de la recherche.\n📸 Crédit photos : ChrisNey Photography",
+        "en": "🎓 It's done: Master's degree defended!On November 3, 2026, I defended my Master's thesis at the University of Kinshasa (UNIKIN), Faculty of Science and Technology, specializing in Networks and Computer Security.📌 Topic: Assessing the Cybersecurity Maturity of Financial Institutions and Banks in the DRC, case study of the Central Bank of Congo, using the NIST CSF 2.0 and ISO/IEC 27001 frameworks.This work reminded me of one thing: cybersecurity is not just about technology, it is about trust, governance, and sovereignty for our financial institutions.🙏 Thank you to my supervisor, Professor Paulin BOALE, to the members of the jury, to the BCC for welcoming me, to my family, to my friends, and to everyone who supported me throughout this journey.🚀 And now, a new chapter begins: the PhD. More research, more impact, always in service of cybersecurity in the DRC and in Africa.I am open to exchanges, collaborations, and opportunities around cybersecurity, risk governance, and research.📸 Photo credit: ChrisNey Photography"
+      },
+      "media": "assets/news/2026-11-08-c-est-fait-master-defendu.jpg",
+      "url": " https://lnkd.in/p/drcdZkkT"
+    },
+    {
       "title": {
         "fr": "Avancement du projet DoS SYN Flood",
         "en": "DoS SYN Flood project update"
