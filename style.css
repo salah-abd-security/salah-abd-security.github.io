@@ -1,4 +1,4 @@
-/* =========================================================
+ /* =========================================================
    Portfolio Salahadine Abdassama — design system
    Tokens : fond #ECEFF3, encre #0F1B2D, accent #2447E0, signal #E39A1B
    Display : Bricolage Grotesque · Texte : Instrument Sans · Data : JetBrains Mono
@@ -379,3 +379,9 @@ footer a:hover{color:var(--ink)}
 
 .news-media.tall{aspect-ratio:auto;height:560px;background:#fff}
 .news-body p{white-space:pre-line}
+
+/* Actualités : texte limité à 4 lignes + « Lire la suite » */
+.news-body p.clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden}
+.news-toggle{align-self:flex-start;background:none;border:0;padding:0;font:inherit;font-size:14px;font-weight:600;color:var(--accent);cursor:pointer}
+.news-toggle:hover{text-decoration:underline}
+.news-toggle[hidden]{display:none}
