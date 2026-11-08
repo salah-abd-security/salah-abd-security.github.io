@@ -1,4 +1,4 @@
-/* =========================================================
+ /* =========================================================
    Portfolio Salahadine — moteur de rendu
    Toutes les pages publiques lisent content.json et se
    redessinent avec ces fonctions. L'admin (admin.js) édite
@@ -539,7 +539,22 @@ function buildNewsCard(n, lang) {
   const body = el("div", { class: "news-body" }, [meta]);
   const title = t(n.title, lang), text = t(n.text, lang);
   if (title) body.append(el("h3", { text: title }));
-  if (text) body.append(el("p", { text }));
+  if (text) {
+    const p = el("p", { class: "clamp", text });
+    const toggle = el("button", { class: "news-toggle", type: "button", "aria-expanded": "false", hidden: "" }, fr ? "Lire la suite" : "Read more");
+    toggle.addEventListener("click", () => {
+      const open = p.classList.toggle("clamp") === false;
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.textContent = open ? (fr ? "Réduire" : "Show less") : (fr ? "Lire la suite" : "Read more");
+    });
+    // Le bouton n'apparaît que si le texte dépasse réellement 4 lignes
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(() => {
+        if (p.classList.contains("clamp")) toggle.hidden = !(p.scrollHeight > p.clientHeight + 1);
+      }).observe(p);
+    }
+    body.append(p, toggle);
+  }
 
   // Lien d'action
   let href = null, label = null;
