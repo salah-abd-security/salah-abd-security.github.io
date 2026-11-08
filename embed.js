@@ -1,4 +1,4 @@
-/* =========================================================
+ /* =========================================================
    Détection des liens vidéo (YouTube, Vimeo, TikTok, ...)
    Utilisé par main.js (affichage) et admin.js (vérification).
    parseEmbed(url) → { provider, name, src, vertical, thumb? } ou null
@@ -63,10 +63,10 @@ function parseEmbed(raw) {
   }
 
   // LinkedIn : code d'intégration, lien de publication ou lien /posts/…
-  if (host === "linkedin.com") {
+  if (/(^|\.)linkedin\.com$/.test(host)) {
     let urn = null;
     if ((m = path.match(/^\/(?:embed\/)?feed\/update\/(urn:li:(?:share|ugcPost|activity):\d+)/))) urn = m[1];
-    else if ((m = path.match(/activity-(\d{10,})/))) urn = `urn:li:activity:${m[1]}`;
+    else if ((m = path.match(/(activity|share|ugcPost)-(\d{10,})/))) urn = `urn:li:${m[1]}:${m[2]}`;
     if (urn) {
       return {
         provider: "linkedin", name: "LinkedIn", vertical: false, tall: true,
